@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import MapContainer from "./MapContainer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MapContainer />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
