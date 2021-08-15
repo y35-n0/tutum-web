@@ -5,12 +5,11 @@ type MapViewProps = {
   targetId: number;
 };
 
-// 지도 페이지
+// User current location page
 const MapView: React.FC<MapViewProps> = ({ targetId }) => {
-  // script loading
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // 동적으로 kakap.maps 라이브러리 불러오기
+  // Load kakao map script library dynamically
   useEffect(() => {
     const script = document.createElement("script");
     script.onload = () => {
@@ -23,7 +22,7 @@ const MapView: React.FC<MapViewProps> = ({ targetId }) => {
     document.head.appendChild(script);
   }, []);
 
-  // script loading이 끝나면 Map 표시
+  // Present map when script loaded
   return <>{isLoading ? null : <Map targetId={targetId} />}</>;
 };
 
