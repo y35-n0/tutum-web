@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Tutum Monitoring System
+> 투툼 모니터링 시스템은 이상상태 및 근로자 관리 기능을 통해 관리자의 안전관리 지원한다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+# 🛠 Tech Stack - 기술 스택
 
-## Available Scripts
+## 💻 React
 
-In the project directory, you can run:
+> Front-End 프레임워크. 생태계가 넓어 다양한 라이브러리를 제공한다는 것이 특징.
 
-### `npm start`
+## 💻 Typescript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 안정적인 개발을 위한 사용.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
+# 📜 View - 화면
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 이상상태 모니터링
 
-### `npm run build`
+ 실시간 이상상태 현황을 제공하는 모니터링 화면
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![monitoring](img/noname01.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ 실시간 이상상태 종합 현황, 근로자 현황, 개별 이상상태 현황 정보 등을 제공함
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 신규 이상상태 알림
 
-### `npm run eject`
+ 신규 이상상태 발생 시 이상상태와 해당 근로자에 대한 정보를 팝업 형식으로 제공함.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![notify](img/noname02.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ 
+## 개별 근로자 관리
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ 개별 근로자에 대한 인적사항, 상태 현황, 위치 등을 제공함.
+ 
+ ![personnel](img/noname03.jpg)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 이상상태 커스터마이징
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+이상상태 발생 기준 및 알림 활성화 여부를 직접 관리할 수 있음.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![customizing](img/noname05.jpg)
+
+---
+
+# ☎️  Manager - 담당자
+
+**👩🏻‍💻**  김예슬
+
+📧  imys0613@naver.com
