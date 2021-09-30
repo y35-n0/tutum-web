@@ -1,5 +1,44 @@
 import { JsonProperty, Serializable } from "typescript-json-serializer";
 
+// 가로세로 크기
+@Serializable()
+export class Size {
+  constructor(
+    @JsonProperty()
+    public readonly width: number,
+    @JsonProperty()
+    public readonly height: number
+  ) {}
+}
+
+// 상하좌우 크기
+@Serializable()
+export class Box {
+  constructor(
+    @JsonProperty()
+    public readonly top: number,
+    @JsonProperty()
+    public readonly right: number,
+    @JsonProperty()
+    public readonly bottom: number,
+    @JsonProperty()
+    public readonly left: number
+  ) {}
+}
+
+@Serializable()
+export class Image {
+  constructor(
+    @JsonProperty()
+    public readonly url: string,
+    @JsonProperty()
+    public readonly size: Size,
+    @JsonProperty()
+    public readonly padding: Box
+  ) {}
+}
+
+// 위치 정보
 @Serializable()
 export class Position {
   constructor(
@@ -10,7 +49,7 @@ export class Position {
     @JsonProperty()
     public readonly floor: number, // 층수
     @JsonProperty()
-    public readonly updated: string // 업데이트 시간
+    public readonly updated: Date // 업데이트 시간
   ) {}
 }
 
@@ -21,8 +60,17 @@ export class Floor {
     @JsonProperty()
     public readonly floor: number, // 층수
     @JsonProperty()
-    public readonly name: string, // 명칭
+    public readonly url: string, // 명칭
     @JsonProperty()
-    public readonly img_src: string // 평면도 img src
+    public readonly img: Image // 평면도 img src
+  ) {}
+}
+
+// 건물 정보
+@Serializable()
+export class Building {
+  constructor(
+    @JsonProperty()
+    public readonly size: Size
   ) {}
 }
