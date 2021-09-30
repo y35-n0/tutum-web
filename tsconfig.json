@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,7 +17,14 @@
     "jsx": "react-jsx",
     "typeRoots": ["./node_modules/@types", "./@types"],
     "declaration": true,
-    "declarationDir": "./@types"
+    "declarationDir": "./@types",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "include": ["src"]
 }
