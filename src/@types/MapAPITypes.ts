@@ -38,29 +38,12 @@ export class Image {
   ) {}
 }
 
-// 위치 정보
-@Serializable()
-export class Position {
-  constructor(
-    @JsonProperty()
-    public readonly x: number, // x
-    @JsonProperty()
-    public readonly y: number, // y
-    @JsonProperty()
-    public readonly floor: number, // 층수
-    @JsonProperty()
-    public readonly updated: Date // 업데이트 시간
-  ) {}
-}
-
 // 층별 정보
 @Serializable()
 export class Floor {
   constructor(
     @JsonProperty()
     public readonly floor: number, // 층수
-    @JsonProperty()
-    public readonly url: string, // 명칭
     @JsonProperty()
     public readonly img: Image // 평면도 img src
   ) {}
@@ -71,6 +54,25 @@ export class Floor {
 export class Building {
   constructor(
     @JsonProperty()
+    public readonly name: string,
+    @JsonProperty()
     public readonly size: Size
+  ) {}
+}
+
+// 위치 정보
+@Serializable()
+export class Position {
+  constructor(
+    @JsonProperty()
+    public readonly x: number, // x
+    @JsonProperty()
+    public readonly y: number, // y
+    @JsonProperty()
+    public readonly floor: Floor, // 층수
+    @JsonProperty()
+    public readonly building: Building, // 건물명
+    @JsonProperty()
+    public readonly updated: Date // 업데이트 시간
   ) {}
 }

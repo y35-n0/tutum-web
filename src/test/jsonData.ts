@@ -1,11 +1,5 @@
-export const user_position_json = {
-  x: 200,
-  y: 100,
-  floor: -1,
-  date: "2021-09-30 19:44",
-};
-
 export const building_info_json = {
+  name: "타임 스퀘어",
   size: { width: 340, height: 178 },
 };
 
@@ -25,4 +19,12 @@ export const floor_info_json = {
       left: 8,
     },
   },
+};
+
+export const user_position_json = {
+  x: 200,
+  y: 100,
+  floor: floor_info_json,
+  building: building_info_json,
+  updated: "2021-09-30 19:44",
 };
