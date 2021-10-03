@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-import MapView from "./views/MapView/MapView";
+import DashboardTest from "./test/DashboardTest";
 
 function App() {
   return (
     <div className="App">
-      {/* FIXME: targetID 수정 */}
-      <MapView targetId={1} />
+      <DashboardTest />
     </div>
   );
 }
