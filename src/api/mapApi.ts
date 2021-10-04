@@ -1,5 +1,5 @@
 // import axios from "axios";
-import { user_position_json } from "../test/jsonData";
+import { userPositionJson } from "../test/jsonData";
 
 // export const getPosition = async (id: number) => {
 //   const res = await axios.get(`/api/worker/get/loc/${id}`);
@@ -9,6 +9,6 @@ import { user_position_json } from "../test/jsonData";
 export const getMap = async (id: number) => {
   let res = null;
   await setTimeout(() => {}, 1000);
-  res = user_position_json;
+  res = userPositionJson;
   return res;
 };

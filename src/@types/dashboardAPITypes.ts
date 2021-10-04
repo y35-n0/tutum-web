@@ -4,8 +4,14 @@ import { JsonProperty, Serializable } from "typescript-json-serializer";
 export class AbnormalState {
   constructor(
     @JsonProperty()
-    public readonly name: string,
+    public readonly datetime: Date,
     @JsonProperty()
-    public readonly id: number
+    public readonly stateName: string,
+    @JsonProperty()
+    public readonly stateLevel: string,
+    @JsonProperty()
+    public readonly userName: string,
+    @JsonProperty()
+    public readonly userId: number
   ) {}
 }

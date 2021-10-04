@@ -3,7 +3,7 @@ import Popout from "../../components/Popout";
 import MapView from "../MapView/MapView";
 import { AbnormalState } from "../../@types/dashboardAPITypes";
 import { deserialize } from "typescript-json-serializer";
-import { abnormal_states_json } from "../../test/jsonData";
+import { abnormalStatesJson } from "../../test/jsonData";
 
 type UserPopoutProps = {
   name: string;
@@ -16,7 +16,7 @@ const DashboradView: React.FC = () => {
   const [userPopout, setUserPopout] = useState<UserPopoutProps | null>(null);
   const [abnormalStates, setAbnormalStates] = useState<AbnormalState[]>(() => {
     // TODO: API 연동
-    return abnormal_states_json.map((state) =>
+    return abnormalStatesJson.map((state) =>
       deserialize<AbnormalState>(state, AbnormalState)
     );
   });
@@ -41,12 +41,12 @@ const DashboradView: React.FC = () => {
       {/* TODO: 이상상태 목록으로 변경 */}
       {abnormalStates.map((state) => (
         <button
-          key={state.id}
+          key={state.userId}
           onClick={() => {
-            setUserPopout({ name: state.name, id: state.id });
+            setUserPopout({ name: state.userName, id: state.userId });
           }}
         >
-          {state.name}
+          {state.userName}
         </button>
       ))}
     </div>

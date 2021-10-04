@@ -1,9 +1,9 @@
-export const building_info_json = {
+export const buildingInfoJson = {
   name: "타임 스퀘어",
   size: { width: 340, height: 178 },
 };
 
-export const floor_info_json = {
+export const floorInfoJson = {
   floor: -1,
   name: "지하 1층",
   img: {
@@ -21,25 +21,34 @@ export const floor_info_json = {
   },
 };
 
-export const user_position_json = {
+export const userPositionJson = {
   x: 200,
   y: 100,
-  floor: floor_info_json,
-  building: building_info_json,
+  floor: floorInfoJson,
+  building: buildingInfoJson,
   updated: "2021-09-30 19:44",
 };
 
-export const abnormal_states_json = [
+export const abnormalStatesJson = [
   {
-    name: "김예슬",
-    id: 1,
+    datetime: "2021-06-03 18:02",
+    stateName: "상태명1",
+    stateLevel: "주의",
+    userName: "방문객",
+    uesrId: 0,
   },
   {
-    name: "양진우",
-    id: 2,
+    datetime: "2021-06-03 18:03",
+    stateName: "상태명2",
+    stateLevel: "경고",
+    userName: "근로자",
+    uesrId: 1,
   },
   {
-    name: "유한길",
-    id: 3,
+    datetime: "2021-06-03 18:01",
+    stateName: "상태명0",
+    stateLevel: "위험",
+    userName: "근로자",
+    uesrId: 2,
   },
 ];

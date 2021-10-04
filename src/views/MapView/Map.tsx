@@ -4,7 +4,7 @@ import { scaleLinear } from "d3-scale";
 import { useQuery } from "react-query";
 import { deserialize } from "typescript-json-serializer";
 import { Position } from "../../@types/mapAPITypes";
-import { user_position_json } from "../../test/jsonData";
+import { userPositionJson } from "../../test/jsonData";
 import { getMap } from "../../api/mapApi";
 
 const REFETCH_INTERVAL_MS = 1000;
@@ -29,7 +29,7 @@ const Map: React.FC<MapProps> = ({ targetId }) => {
 
   // TODO: position 최초 설정 수정 (default X)
   const [position, setPosition] = useState<Position>(() => {
-    return deserialize<Position>(user_position_json, Position);
+    return deserialize<Position>(userPositionJson, Position);
   });
   const svgRef = useRef(null);
 
