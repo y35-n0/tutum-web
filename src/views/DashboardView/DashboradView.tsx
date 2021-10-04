@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Popout from "../../components/Popout";
 import MapView from "../MapView/MapView";
 import { AbnormalState } from "../../@types/dashboardAPITypes";
 import { deserialize } from "typescript-json-serializer";
 import { abnormalStatesJson } from "../../test/jsonData";
+import AbnormalStateList from "./conponent/AbnormalStateList";
+import { UserInfo } from "../../@types/userAPITypes";
 
 type UserPopoutProps = {
   name: string;
@@ -20,6 +22,13 @@ const DashboradView: React.FC = () => {
       deserialize<AbnormalState>(state, AbnormalState)
     );
   });
+
+  const setupUserPopout = (user: UserInfo) => {
+    setUserPopout({
+      name: user.name,
+      id: user.id,
+    });
+  };
 
   return (
     <div>
@@ -39,16 +48,14 @@ const DashboradView: React.FC = () => {
       <h1>DASHBOARD</h1>
       {/* 현재 이상상태 목록 표시 */}
       {/* TODO: 이상상태 목록으로 변경 */}
-      {abnormalStates.map((state) => (
-        <button
-          key={state.userId}
-          onClick={() => {
-            setUserPopout({ name: state.userName, id: state.userId });
-          }}
-        >
-          {state.userName}
-        </button>
-      ))}
+      <AbnormalStateList
+        abnormalStates={abnormalStates}
+        handleClick={
+          // FIXME: user 데이터에 event가 들어옴
+          // TODO: Capturing으로 선택된 요소에 대한 값 가져오기
+          () => setupUserPopout
+        }
+      />
     </div>
   );
 };

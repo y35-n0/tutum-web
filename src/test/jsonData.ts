@@ -31,24 +31,21 @@ export const userPositionJson = {
 
 export const abnormalStatesJson = [
   {
+    id: 1,
     datetime: "2021-06-03 18:02",
-    stateName: "상태명1",
-    stateLevel: "주의",
-    userName: "방문객",
-    uesrId: 0,
+    state: { content: "상태명1", level: "주의" },
+    user: { name: "방문객0", id: 0 },
   },
   {
+    stateId: 2,
     datetime: "2021-06-03 18:03",
-    stateName: "상태명2",
-    stateLevel: "경고",
-    userName: "근로자",
-    uesrId: 1,
+    state: { content: "상태명2", level: "경고" },
+    user: { name: "근로자0", id: 1 },
   },
   {
+    stateId: 0,
     datetime: "2021-06-03 18:01",
-    stateName: "상태명0",
-    stateLevel: "위험",
-    userName: "근로자",
-    uesrId: 2,
+    state: { content: "상태명0", level: "위험" },
+    user: { name: "근로자1", id: 2 },
   },
 ];

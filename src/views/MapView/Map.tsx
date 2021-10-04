@@ -9,11 +9,11 @@ import { getMap } from "../../api/mapApi";
 
 const REFETCH_INTERVAL_MS = 1000;
 
-type MapProps = {
+type Props = {
   targetId: number;
 };
 
-const Map: React.FC<MapProps> = ({ targetId }) => {
+const Map: React.FC<Props> = ({ targetId }) => {
   // TODO: 실제 값 가져오기
   // Fetch position data
   const { data /* , error, isFetching */ } = useQuery(
