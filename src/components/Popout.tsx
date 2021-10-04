@@ -7,6 +7,7 @@ type Props = {
   name: string;
   closeWindow: Function;
 };
+
 const Popout: React.FC<Props> = (props) => {
   const [containerElement, setContainerElement] =
     useState<HTMLDivElement | null>(null);

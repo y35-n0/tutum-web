@@ -28,3 +28,18 @@ export const user_position_json = {
   building: building_info_json,
   updated: "2021-09-30 19:44",
 };
+
+export const abnormal_states_json = [
+  {
+    name: "김예슬",
+    id: 1,
+  },
+  {
+    name: "양진우",
+    id: 2,
+  },
+  {
+    name: "유한길",
+    id: 3,
+  },
+];

@@ -3,9 +3,9 @@ import { select } from "d3";
 import { scaleLinear } from "d3-scale";
 import { useQuery } from "react-query";
 import { deserialize } from "typescript-json-serializer";
-import { Position } from "../../@types/MapAPITypes";
+import { Position } from "../../@types/mapAPITypes";
 import { user_position_json } from "../../test/jsonData";
-import { getMap } from "../../api/workerApi";
+import { getMap } from "../../api/mapApi";
 
 const REFETCH_INTERVAL_MS = 1000;
 

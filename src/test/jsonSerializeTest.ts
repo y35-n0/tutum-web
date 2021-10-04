@@ -1,19 +1,16 @@
 import { deserialize, serialize } from "typescript-json-serializer";
-import {
-  user_position_json,
-  floor_info_json,
-  building_info_json,
-} from "./jsonData";
-import { Position, Floor, Building } from "../@types/MapAPITypes";
+import { user_position_json, abnormal_states_json } from "./jsonData";
+import { Position } from "../@types/mapAPITypes";
+import { AbnormalState } from "../@types/dashboardAPITypes";
 
+/// Map
 const position = deserialize<Position>(user_position_json, Position);
 const data1 = serialize(position);
 console.dir(data1);
 
-const floor = deserialize<Floor>(floor_info_json, Floor);
-const data2 = serialize(floor);
+/// Abnormal State
+const abnormalStates = abnormal_states_json.map((state) =>
+  deserialize<AbnormalState>(state, AbnormalState)
+);
+const data2 = abnormalStates.map((state) => serialize(state));
 console.dir(data2);
-
-const building = deserialize<Building>(building_info_json, Building);
-const data3 = serialize(building);
-console.dir(data3);
