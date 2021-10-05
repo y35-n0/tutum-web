@@ -1,4 +1,3 @@
-import { isConstructorDeclaration } from "typescript";
 import { JsonProperty, Serializable } from "typescript-json-serializer";
 import { UserInfo as User } from "./userAPITypes";
 

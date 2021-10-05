@@ -37,13 +37,13 @@ export const abnormalStatesJson = [
     user: { name: "방문객0", id: 0 },
   },
   {
-    stateId: 2,
+    id: 2,
     datetime: "2021-06-03 18:03",
     state: { content: "상태명2", level: "경고" },
     user: { name: "근로자0", id: 1 },
   },
   {
-    stateId: 0,
+    id: 0,
     datetime: "2021-06-03 18:01",
     state: { content: "상태명0", level: "위험" },
     user: { name: "근로자1", id: 2 },
