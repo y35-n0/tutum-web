@@ -20,6 +20,8 @@ export class AbnormalState {
     @JsonProperty()
     public readonly state: State,
     @JsonProperty()
-    public readonly user: User
+    public readonly user: User,
+    @JsonProperty()
+    public readonly actionStatus: string
   ) {}
 }

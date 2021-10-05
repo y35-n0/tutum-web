@@ -3,8 +3,7 @@ import { select } from "d3";
 import { scaleLinear } from "d3-scale";
 import { useQuery } from "react-query";
 import { deserialize } from "typescript-json-serializer";
-import { Position } from "../../@types/mapAPITypes";
-import { userPositionJson } from "../../test/jsonData";
+import { Building, Floor, Position } from "../../@types/mapAPITypes";
 import { getMap } from "../../api/mapApi";
 
 const REFETCH_INTERVAL_MS = 1000;
@@ -14,59 +13,64 @@ type Props = {
 };
 
 const Map: React.FC<Props> = ({ targetId }) => {
-  // TODO: 실제 값 가져오기
   // Fetch position data
-  const { data /* , error, isFetching */ } = useQuery(
-    "position",
-    () => getMap(targetId),
-    {
-      refetchInterval: REFETCH_INTERVAL_MS,
-      onSuccess: (data) => {
-        setPosition(deserialize<Position>(data, Position));
-      },
-    }
-  );
+  const {
+    data: position,
+    error,
+    isLoading,
+  } = useQuery("position", () => getMap(targetId), {
+    refetchInterval: REFETCH_INTERVAL_MS,
+    onSuccess: (data) => {
+      const _position = deserialize<Position>(data, Position);
+      setFloor(_position.floor);
+      setBuilding(_position.building);
+    },
+  });
+  const [floor, setFloor] = useState<Floor | null>(null);
+  const [building, setBuilding] = useState<Building | null>(null);
 
   // TODO: position 최초 설정 수정 (default X)
-  const [position, setPosition] = useState<Position>(() => {
-    return deserialize<Position>(userPositionJson, Position);
-  });
   const svgRef = useRef(null);
 
   // Scale
   // When floor data updated, update scale functions.
   const xScale = useCallback(
     (x) => {
+      if (building == null || floor == null) return null;
+
       const xScale = scaleLinear()
-        .domain([0, position.building.size.width])
+        .domain([0, building.size.width])
         .range([
-          position.floor.img.padding.left,
-          position.floor.img.size.width - position.floor.img.padding.right,
+          floor.img.padding.left,
+          floor.img.size.width - floor.img.padding.right,
         ]);
       return xScale(x);
     },
-    [position.floor, position.building]
+    [floor, building]
   );
 
   const yScale = useCallback(
     (y) => {
+      if (building == null || floor == null) return null;
       const yScale = scaleLinear()
-        .domain([position.building.size.height, 0])
+        .domain([building.size.height, 0])
         .range([
-          position.floor.img.size.height - position.floor.img.padding.top,
-          position.floor.img.padding.bottom,
+          floor.img.size.height - floor.img.padding.top,
+          floor.img.padding.bottom,
         ]);
       return yScale(y);
     },
-    [position.floor, position.building]
+    [floor, building]
   );
 
   // Map Image
   // When floor data updated, draw floor map image
   useEffect(() => {
+    if (floor == null) return;
+
     const svg = select(svgRef.current)
-      .attr("width", position.floor.img.size.width)
-      .attr("height", position.floor.img.size.height);
+      .attr("width", floor.img.size.width)
+      .attr("height", floor.img.size.height);
 
     // image
     svg
@@ -74,27 +78,35 @@ const Map: React.FC<Props> = ({ targetId }) => {
       .attr("id", "background_map_img")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", position.floor.img.size.width)
-      .attr("height", position.floor.img.size.height)
-      .attr("xlink:href", position.floor.img.url);
-  }, [position.floor]);
+      .attr("width", floor.img.size.width)
+      .attr("height", floor.img.size.height)
+      .attr("xlink:href", floor.img.url);
+  }, [floor]);
 
   // Position Marker
   // When position data or floor data updated, draw position marker.
+  // FIXME: when data fetcted, window refeshes.
   useEffect(() => {
+    if (position == null || floor == null || building == null) return;
+
     const svg = select(svgRef.current);
     // position
+
     svg
       .append("circle")
       .attr("id", "user_position")
       .attr("cx", xScale(position.x))
-      .attr("cy", position.floor.img.size.height - yScale(position.y))
+      .attr("cy", floor.img.size.height - yScale(position.y)!)
       .attr("r", 8)
       .style("fill", "red")
       .style("stroke", "black");
 
     // TODO: 시간 표시
   }, [position, xScale, yScale]);
+
+  // When error occurs or loading data
+  if (error) throw new Error();
+  if (isLoading) return <p>Loading...</p>;
 
   return <svg ref={svgRef}></svg>;
 };

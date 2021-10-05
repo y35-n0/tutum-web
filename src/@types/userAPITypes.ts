@@ -6,6 +6,10 @@ export class UserInfo {
     @JsonProperty()
     public readonly name: string,
     @JsonProperty()
-    public readonly id: number
+    public readonly id: number,
+    @JsonProperty()
+    public readonly title: string,
+    @JsonProperty()
+    public readonly workingCondition: string
   ) {}
 }
