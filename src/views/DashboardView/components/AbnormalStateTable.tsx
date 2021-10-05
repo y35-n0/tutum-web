@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { deserialize } from "typescript-json-serializer";
+import React, { useState } from "react";
 import { AbnormalState } from "../../../@types/dashboardAPITypes";
 import { UserInfo } from "../../../@types/userAPITypes";
 import { Table, TableBody, TableHeader } from "../../components/Table";
 import Popout from "../../components/Popout";
 import MapView from "../../MapView/MapView";
-import { useQuery } from "react-query";
-import { getAbnormalStates } from "../../../api/dashboardApi";
-
-// useQuery prarms
-const REFETCH_INTERVAL_MS = 1000;
 
 // UserPopout params
 type UserPopoutProps = {
@@ -40,21 +34,13 @@ const headerNames = [
   "처리 상태",
 ];
 
+type Props = {
+  abnormalStates: AbnormalState[];
+};
 // Abnormal State Table
-const AbnormalStateTable: React.FC<{}> = () => {
-  // Map Popout
+const AbnormalStateTable: React.FC<Props> = ({ abnormalStates }) => {
+  // Popout's Params
   const [userPopout, setUserPopout] = useState<UserPopoutProps | null>(null);
-
-  // TODO: to useQuery
-  const {
-    data: abnormalStates,
-    error,
-    isLoading,
-  } = useQuery("abnormalState", () => getAbnormalStates(), {
-    refetchInterval: REFETCH_INTERVAL_MS,
-    onSuccess: (data) =>
-      data.map((datum) => deserialize<AbnormalState>(datum, AbnormalState)),
-  });
 
   const setupUserPopout = (user: UserInfo) => {
     setUserPopout({
@@ -62,10 +48,6 @@ const AbnormalStateTable: React.FC<{}> = () => {
       id: user.id,
     });
   };
-
-  // When error occurs or loading data
-  if (error) throw new Error();
-  if (isLoading) return <p>Loading...</p>;
 
   // When data is fetched normally
   return (
