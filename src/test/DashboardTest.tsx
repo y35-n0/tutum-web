@@ -1,5 +1,5 @@
 import React from "react";
-import DashboradView from "../views/DashboardView/DashboradView";
+import DashboradView from "../views/DashboardView/DashboardView";
 
 const DashboardTest: React.FC = () => {
   return (
