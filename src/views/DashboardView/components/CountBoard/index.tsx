@@ -35,6 +35,13 @@ const tmpItems = [
     isDanger: false,
   },
   {
+    id: "health",
+    value: "health",
+    content: "건강 이상",
+    count: 2,
+    isDanger: false,
+  },
+  {
     id: "nature",
     value: "nature",
     content: "환경 이상",
