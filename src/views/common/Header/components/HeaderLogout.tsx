@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { AuthUser } from "../../../../@types/authTypes";
 import userImg from "../../../../assets/user.svg";
 
@@ -5,17 +7,54 @@ type Props = {
   user: AuthUser;
 };
 
-export const HeaderAuthLoggedOut: React.FC<Props> = ({ user }) => {
+const authBoxDivStyle = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const imgStyle = css`
+  margin-right: 10px;
+`;
+
+const userGreetingDivStyle = css`
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+`;
+
+const userGreetingSpanStyle = css`
+  font-size: 13px;
+`;
+
+const authButtonStyle = css`
+  background: transparent;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  padding: 7px 17px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #0b4ca3;
+    font-weight: Medium;
+  }
+`;
+
+export const HeaderAuthLoggedOut: React.FC<Props> = (props) => {
   return (
-    <div className="authBox">
-      <div className="user">
-        <img src={userImg} alt="user icon" />
-        <p className="userName">
-          {user!.userName}
-          <span className="userSpan">님 환영합니다</span>
-        </p>
+    <div className="authBox" css={authBoxDivStyle}>
+      <div className="userGreeting" css={userGreetingDivStyle}>
+        <img src={userImg} alt="user icon" css={imgStyle} />
+        <p>{props.user!.userName}</p>
+        <span css={userGreetingSpanStyle}>님 환영합니다</span>
       </div>
-      <button className="signOut">로그아웃</button>
+      <button className="authButton" css={authButtonStyle}>
+        로그아웃
+      </button>
     </div>
   );
 };

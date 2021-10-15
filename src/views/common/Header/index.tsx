@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { AuthUser } from "../../../@types/authTypes";
 import { HeaderBottom } from "./components/HeaderBottom";
 import { HeaderBox } from "./components/HeaderBox";
@@ -15,21 +15,24 @@ import { HeaderTop } from "./components/HeaderTop";
 
 const tempItems = [
   { id: "dashboard", value: "dashboard", content: "대시보드" },
-  {
-    id: "management_employees",
-    value: "management_employees",
-    content: "근로자 관리",
-  },
+  { id: "employees", value: "employees", content: "근로자 관리" },
   { id: "customizing", value: "customizing", content: "이상상태 커스터마이징" },
 ];
+
+const tempUser = {
+  userId: "admin",
+  userName: "관리자",
+};
 
 // FIXME:
 // - user 쿠키로 가져오기
 // - items
 // - time format -> moment
 const Header: React.FC = () => {
-  const [naviagationChecked, setNavigationChecked] = useState<string>("");
-  const [user, setUser] = useState<AuthUser>();
+  const [naviagationChecked, setNavigationChecked] = useState<string>(
+    tempItems[0].id
+  );
+  const [user, setUser] = useState<AuthUser>(tempUser);
   const [items, setItems] = useState<HeaderNavigationItemContent[]>(tempItems);
   const [time, setTimes] = useState<string>(Date());
 
@@ -48,13 +51,14 @@ const Header: React.FC = () => {
   return (
     <HeaderBox>
       <HeaderTop>
-        <HeaderTitle title="실시간 안전 관리 모니터링 시스템" />
+        <HeaderTitle title="Tutum 실시간 안전 관리 모니터링 시스템" />
         {user ? <HeaderAuthLoggedOut user={user} /> : <HeaderAuthLoggedIn />}
       </HeaderTop>
       <HeaderBottom>
         <HeaderNavigation>
           {items.map((item) => (
             <HeaderNavigationItem
+              key={item.id}
               item={item}
               checked={item.id === naviagationChecked}
               handleChange={handleNavigationChange}
