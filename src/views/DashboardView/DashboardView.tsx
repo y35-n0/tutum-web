@@ -1,19 +1,11 @@
-import AbnormalStatusTable from "./components/AbnormalStatusTable";
-import ComprehensiveStatusBoard from "./components/ComprehensiveStatusBoard";
-import EmployeesGraph from "./components/EmployeesGraph";
-import Header from "./components/Header";
-import Navigator from "./components/Navigator";
-import Popup from "./components/Popup";
+import { useState } from "react";
+import { AuthUser } from "../../@types/authTypes";
+import Header from "../common/Header";
 
-export const DashboradView = () => {
+const DashboradView: React.FC = () => {
   return (
     <>
       <Header />
-      <Navigator />
-      <Popup />
-      <ComprehensiveStatusBoard />
-      <EmployeesGraph />
-      <AbnormalStatusTable />
     </>
   );
 };
