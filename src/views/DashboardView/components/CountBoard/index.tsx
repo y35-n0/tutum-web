@@ -4,8 +4,16 @@ import CountBoardStatusItem, {
   CountBoardStatusItemContent,
 } from "./CountBoardStatusItem";
 import CountBoardBox from "./CountBoardBox";
+import CountBoardEmployeeBox from "./CountBoardEmployeeBox";
+import CountBoardEmployeeHeader from "./CountBoardEmployeeHeader";
+import CountBoardEmployeeGraph from "./CountBoardEmployeeGraph";
+import CountBoardEmployeeLegendBox from "./CountBoardEmployeeLegendBox";
+import CountBoardEmployeeLegendRow from "./CountBoardEmployeeLegendRow";
+import CountBoardEmployeeLegendItem, {
+  CountBoardEmployeeLegendItemContent,
+} from "./CountBoardEmployeeLegendItem";
 
-const tmpItems = [
+const tmpStatusItems = [
   {
     id: "comprehensive",
     value: "comprehensive",
@@ -50,9 +58,36 @@ const tmpItems = [
   },
 ];
 
+const tmpEmployeeItems = [
+  {
+    content: "업무 중",
+    count: 15,
+  },
+  {
+    content: "휴식 중",
+    count: 5,
+  },
+  {
+    content: "방문객",
+    count: 5,
+  },
+  {
+    content: "퇴근",
+    count: 2,
+  },
+  {
+    content: "알 수 없음",
+    count: 2,
+  },
+];
+
 const CountBoard: React.FC = () => {
-  const [items, setItems] = useState<CountBoardStatusItemContent[]>(tmpItems);
+  const [statusItems, setStatusItems] =
+    useState<CountBoardStatusItemContent[]>(tmpStatusItems);
+  const [employeeItems, setEmployeeItems] =
+    useState<CountBoardEmployeeLegendItemContent[]>(tmpEmployeeItems);
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
+  const [employeeTotal, setEmployeeTotal] = useState<number>(22);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newVal = e.currentTarget.value;
@@ -71,10 +106,11 @@ const CountBoard: React.FC = () => {
     }
   };
 
+  // FIXME: legend row
   return (
     <CountBoardBox>
       <CountBoardStatusBox>
-        {items.map((item) => (
+        {statusItems.map((item) => (
           <CountBoardStatusItem
             key={item.id}
             item={item}
@@ -83,6 +119,15 @@ const CountBoard: React.FC = () => {
           />
         ))}
       </CountBoardStatusBox>
+      <CountBoardEmployeeBox>
+        <CountBoardEmployeeHeader count={employeeTotal} />
+        <CountBoardEmployeeGraph />
+        <CountBoardEmployeeLegendBox>
+          {employeeItems.map((item) => (
+            <CountBoardEmployeeLegendItem key={item.content} item={item} />
+          ))}
+        </CountBoardEmployeeLegendBox>
+      </CountBoardEmployeeBox>
     </CountBoardBox>
   );
 };
