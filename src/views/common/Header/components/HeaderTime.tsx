@@ -11,7 +11,7 @@ const currentTimeDivStyle = css`
 `;
 
 const currentTimeSpanStyle = css`
-  font-size: 18px;
+  font-size: 15px;
   color: #6a7193;
   font-weight: 500;
 `;

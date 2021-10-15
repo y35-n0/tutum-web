@@ -23,13 +23,9 @@ const userGreetingDivStyle = css`
   margin-right: 24px;
 `;
 
-const userGreetingSpanStyle = css`
-  font-size: 13px;
-`;
-
 const authButtonStyle = css`
   background: transparent;
-  font-size: 14px;
+  font-size: 13px;
   color: #fff;
   outline: none;
   border-radius: 100px;
@@ -49,8 +45,7 @@ export const HeaderAuthLoggedOut: React.FC<Props> = (props) => {
     <div className="authBox" css={authBoxDivStyle}>
       <div className="userGreeting" css={userGreetingDivStyle}>
         <img src={userImg} alt="user icon" css={imgStyle} />
-        <p>{props.user!.userName}</p>
-        <span css={userGreetingSpanStyle}>님 환영합니다</span>
+        <p>{props.user!.userName} 님</p>
       </div>
       <button className="authButton" css={authButtonStyle}>
         로그아웃

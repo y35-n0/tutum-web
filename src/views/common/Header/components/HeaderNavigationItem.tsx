@@ -8,7 +8,7 @@ const navigationItemRadioStyle = css`
 
 const navigationItemLabelStyle = css`
   display: inline-block;
-  font-size: 18px;
+  font-size: 15px;
   background: #6a7193;
   color: #fff;
   border-radius: 100px;
@@ -38,7 +38,7 @@ type Props = {
 
 export const HeaderNavigationItem: React.FC<Props> = (props) => {
   return (
-    <div className="navigationItem">
+    <label className="navigationItem">
       <input
         className="navigationItem"
         type="radio"
@@ -49,13 +49,9 @@ export const HeaderNavigationItem: React.FC<Props> = (props) => {
         onChange={props.handleChange}
         css={navigationItemRadioStyle}
       />
-      <label
-        className="navigationItem"
-        htmlFor={props.item.id}
-        css={navigationItemLabelStyle}
-      >
+      <span className="navigationItem" css={navigationItemLabelStyle}>
         {props.item.content}
-      </label>
-    </div>
+      </span>
+    </label>
   );
 };

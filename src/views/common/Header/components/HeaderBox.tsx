@@ -7,7 +7,7 @@ const headerStyle = css`
   left: 0;
   z-index: 1000;
   width: 100%;
-  padding: 24px;
+  padding: 20px;
   background-color: #0b4ca3;
   align-items: center;
   justify-content: center;

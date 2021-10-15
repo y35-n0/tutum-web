@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 const headerTopDivStyle = css`
   width: 100%;
   padding: 0 20px;
+  margin-bottom: 40px;
   max-width: 1340px;
   display: flex;
   align-items: center;

@@ -2,11 +2,15 @@
 import { css } from "@emotion/react";
 import titleImg from "../../../../assets/title.svg";
 
-const titleNameStyle = css`
+const titleNameDivStyle = css`
   display: flex;
   align-items: center;
-  font-size: 12px;
+`;
+
+const titleNameH1Style = css`
+  font-size: 34px;
   font-weight: bold;
+  margin: 0px;
 `;
 
 const imgStyle = css`
@@ -19,9 +23,9 @@ type Props = {
 
 export const HeaderTitle: React.FC<Props> = (props) => {
   return (
-    <div className="titleName" css={titleNameStyle}>
+    <div className="titleName" css={titleNameDivStyle}>
       <img src={titleImg} alt="title logo" css={imgStyle} />
-      <h1>{props.title}</h1>
+      <h1 css={titleNameH1Style}>{props.title}</h1>
     </div>
   );
 };

@@ -29,16 +29,14 @@ const tempUser = {
 // - items
 // - time format -> moment
 const Header: React.FC = () => {
-  const [naviagationChecked, setNavigationChecked] = useState<string>(
-    tempItems[0].id
-  );
+  const [checked, setChecked] = useState<string>(tempItems[0].id);
   const [user, setUser] = useState<AuthUser>(tempUser);
   const [items, setItems] = useState<HeaderNavigationItemContent[]>(tempItems);
   const [time, setTimes] = useState<string>(Date());
 
   const handleNavigationChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (naviagationChecked !== e.currentTarget.value) {
-      setNavigationChecked(e.currentTarget.value);
+    if (checked !== e.currentTarget.value) {
+      setChecked(e.currentTarget.value);
     }
   };
 
@@ -51,7 +49,7 @@ const Header: React.FC = () => {
   return (
     <HeaderBox>
       <HeaderTop>
-        <HeaderTitle title="Tutum 실시간 안전 관리 모니터링 시스템" />
+        <HeaderTitle title="안전 관리 시스템" />
         {user ? <HeaderAuthLoggedOut user={user} /> : <HeaderAuthLoggedIn />}
       </HeaderTop>
       <HeaderBottom>
@@ -60,7 +58,7 @@ const Header: React.FC = () => {
             <HeaderNavigationItem
               key={item.id}
               item={item}
-              checked={item.id === naviagationChecked}
+              checked={item.id === checked}
               handleChange={handleNavigationChange}
             />
           ))}
