@@ -1,13 +1,20 @@
 import Header from "../common/Header";
-import CountBoard from "./components/CountBoard";
-import TableBoard from "./components/TableBoard";
+import Wrapper from "../common/Wrapper";
+import CountBoard from "./components/BoardCount";
+import TableBoard from "./components/BoardTable";
+import GlobalStyle from "../common/GlobalStyle";
+import NavigatorAndTime from "../common/NavigatorAndTime";
 
 const DashboradView: React.FC = () => {
   return (
     <>
+      <GlobalStyle />
       <Header />
-      <CountBoard />
-      <TableBoard />
+      <NavigatorAndTime />
+      <Wrapper>
+        <CountBoard />
+        <TableBoard />
+      </Wrapper>
     </>
   );
 };

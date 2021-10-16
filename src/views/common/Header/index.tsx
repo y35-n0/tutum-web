@@ -1,23 +1,11 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useState } from "react";
 import { AuthUser } from "../../../@types/authTypes";
-import { HeaderBottom } from "./components/HeaderBottom";
-import { HeaderBox } from "./components/HeaderBox";
-import { HeaderAuthLoggedIn } from "./components/HeaderLogin";
-import { HeaderAuthLoggedOut } from "./components/HeaderLogout";
-import { HeaderNavigation } from "./components/HeaderNavigation";
-import {
-  HeaderNavigationItem,
-  HeaderNavigationItemContent,
-} from "./components/HeaderNavigationItem";
-import { HeaderTime } from "./components/HeaderTime";
-import { HeaderTitle } from "./components/HeaderTitle";
-import { HeaderTop } from "./components/HeaderTop";
+import HeaderAuthBox from "./HeaderAuthBox";
+import HeaderAuthLoginContent from "./HeaderAuthLoginContent";
+import HeaderAuthLogoutContent from "./HeaderAuthLogoutContent";
+import HeaderBox from "./HeaderBox";
 
-const tempItems = [
-  { id: "dashboard", value: "dashboard", content: "대시보드" },
-  { id: "employees", value: "employees", content: "근로자 관리" },
-  { id: "customizing", value: "customizing", content: "이상상태 커스터마이징" },
-];
+import { HeaderTitle } from "./HeaderTitle";
 
 const tempUser = {
   userId: "admin",
@@ -26,45 +14,19 @@ const tempUser = {
 
 // FIXME:
 // - user 쿠키로 가져오기
-// - items
-// - time format -> moment
 const Header: React.FC = () => {
-  const [checked, setChecked] = useState<string>(tempItems[0].id);
   const [user, setUser] = useState<AuthUser>(tempUser);
-  const [items, setItems] = useState<HeaderNavigationItemContent[]>(tempItems);
-  const [time, setTimes] = useState<string>(Date());
-
-  const handleNavigationChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (checked !== e.currentTarget.value) {
-      setChecked(e.currentTarget.value);
-    }
-  };
-
-  useEffect(() => {
-    setInterval(() => {
-      setTimes(Date());
-    });
-  }, []);
 
   return (
     <HeaderBox>
-      <HeaderTop>
-        <HeaderTitle title="안전 관리 시스템" />
-        {user ? <HeaderAuthLoggedOut user={user} /> : <HeaderAuthLoggedIn />}
-      </HeaderTop>
-      <HeaderBottom>
-        <HeaderNavigation>
-          {items.map((item) => (
-            <HeaderNavigationItem
-              key={item.id}
-              item={item}
-              checked={item.id === checked}
-              handleChange={handleNavigationChange}
-            />
-          ))}
-        </HeaderNavigation>
-        <HeaderTime time={time} />
-      </HeaderBottom>
+      <HeaderTitle title="안전 관리 시스템" />
+      <HeaderAuthBox>
+        {user ? (
+          <HeaderAuthLogoutContent user={user} />
+        ) : (
+          <HeaderAuthLoginContent />
+        )}
+      </HeaderAuthBox>
     </HeaderBox>
   );
 };
