@@ -1,5 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { Global, css } from "@emotion/react";
+import { format } from "date-fns";
+
+export const formattingDate = (date: Date): string => {
+  return format(date, "yyyy.MM.dd ccc aa hh:mm:ss");
+};
 
 export const DANGER_LEVEL_COLOR: { [name: string]: string } = {
   위험: "#FF0000",

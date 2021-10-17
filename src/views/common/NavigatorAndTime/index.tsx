@@ -1,4 +1,6 @@
+import { format } from "date-fns";
 import { ChangeEvent, useEffect, useState } from "react";
+import { formattingDate } from "../GlobalStyle";
 import NavigatorAndTimeBox from "./NavigatorAndTimeBox";
 import NavigatorBox from "./NavigatorBox";
 import {
@@ -15,12 +17,11 @@ const tmpNavigatorItems = [
 
 // FIXME:
 // - items
-// - time format -> moment
 const NavigatorAndTime: React.FC = () => {
   const [checked, setChecked] = useState<string>(tmpNavigatorItems[0].id);
   const [items, setItems] =
     useState<HeaderNavigationItemContent[]>(tmpNavigatorItems);
-  const [time, setTimes] = useState<string>(Date());
+  const [time, setTimes] = useState<string>(formattingDate(new Date()));
 
   const handleNavigationChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (checked !== e.currentTarget.value) {
@@ -30,7 +31,7 @@ const NavigatorAndTime: React.FC = () => {
 
   useEffect(() => {
     setInterval(() => {
-      setTimes(Date());
+      setTimes(formattingDate(new Date()));
     });
   }, []);
 

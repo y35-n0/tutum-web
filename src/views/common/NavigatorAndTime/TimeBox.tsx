@@ -22,11 +22,9 @@ type Props = {
 
 export const HeaderTime: React.FC<Props> = (props) => {
   return (
-    <div className="current-time" css={boxStyle}>
+    <div css={boxStyle}>
       <img src={timeSvg} alt="time" />
-      <span className="current-time" css={spanStyle}>
-        현재시각 :&nbsp; {props.time}
-      </span>
+      <span css={spanStyle}>현재시각 :&nbsp; {props.time}</span>
     </div>
   );
 };

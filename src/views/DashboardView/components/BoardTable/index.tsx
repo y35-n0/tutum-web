@@ -7,11 +7,12 @@ import TableBoardTableHeader, {
 import TableBoardTableRow, { TableBoardItem } from "./BoardTableRow";
 import BoardTableTitle from "./BoardTableTitle";
 import BoardTableInTable from "./BoardTableInTable";
+import { formattingDate } from "../../../common/GlobalStyle";
 
 const tmpStatusItems: TableBoardItem[] = [
   {
     id: 1,
-    timestamp: Date(),
+    timestamp: formattingDate(new Date()),
     dangerLevel: "위험",
     content: "심박수 이상",
     userName: "홍길동",
@@ -21,7 +22,7 @@ const tmpStatusItems: TableBoardItem[] = [
   },
   {
     id: 2,
-    timestamp: Date(),
+    timestamp: formattingDate(new Date()),
     dangerLevel: "경고",
     content: "심박수 이상",
     userName: "홍길동",
@@ -31,7 +32,7 @@ const tmpStatusItems: TableBoardItem[] = [
   },
   {
     id: 3,
-    timestamp: Date(),
+    timestamp: formattingDate(new Date()),
     dangerLevel: "주의",
     content: "심박수 이상",
     userName: "홍길동",
