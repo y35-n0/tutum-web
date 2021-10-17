@@ -49,30 +49,52 @@ export class Floor {
   ) {}
 }
 
+// 층별 높이 정보
+@Serializable()
+export class FloorHeigh {
+  constructor(
+    @JsonProperty()
+    public readonly level: number, // 층수
+    @JsonProperty()
+    public readonly content: string, // 명칭
+    @JsonProperty()
+    public readonly heightLow: number, // 층 바닥 높이
+    @JsonProperty()
+    public readonly heightHigh: number // 층 천장 높이
+  ) {}
+}
+
 // 건물 정보
 @Serializable()
 export class Building {
   constructor(
     @JsonProperty()
+    public readonly id: number,
+    @JsonProperty()
     public readonly name: string,
     @JsonProperty()
-    public readonly size: Size
+    public readonly size: Size,
+    @JsonProperty()
+    public readonly floorHeightInfo: FloorHeigh[]
   ) {}
 }
 
 // 위치 정보
 @Serializable()
-export class Position {
+export class Location {
   constructor(
     @JsonProperty()
     public readonly x: number, // x
     @JsonProperty()
     public readonly y: number, // y
     @JsonProperty()
-    public readonly floor: Floor, // 층수
+    public readonly z: number, // z
     @JsonProperty()
-    public readonly building: Building, // 건물명
+    public readonly buildingId: number, // 빌딩 Id
     @JsonProperty()
-    public readonly updated: Date // 업데이트 시간
+    public readonly updated: Date, // 업데이트 시간
+
+    public floor?: Floor, // 층수 정보
+    public building?: Building // 빌딩 정보
   ) {}
 }

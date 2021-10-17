@@ -1,7 +1,7 @@
 // 지도
 // 사용자 위치 가져오기
 // Input: userID
-export const userPositionJson = {
+export const locationJson = {
   x: 200,
   y: 100,
   z: 1,
@@ -11,7 +11,7 @@ export const userPositionJson = {
 
 // 빌딩 정보 가져오기
 // Input : buidingId
-export const buildingInfoJson = {
+export const buildingJson = {
   id: 0,
   name: "타임 스퀘어",
   size: { width: 340, height: 178 },
@@ -29,7 +29,7 @@ export const buildingInfoJson = {
 
 // 층수 이미지 정보 가져오기
 // Input : buildingId, floorLevel
-export const floorInfoJson = {
+export const floorJson = {
   buildingId: 0,
   level: -1,
   name: "지하 1층",

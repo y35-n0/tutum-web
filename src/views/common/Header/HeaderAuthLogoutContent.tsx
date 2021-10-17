@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { AuthUser } from "../../../@types/authTypes";
+import { AuthUser } from "../../../types/authTypes";
 import userImg from "../../../assets/user.svg";
 import HeaderAuthButton from "./HeaderAuthButton";
 

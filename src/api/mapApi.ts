@@ -1,14 +1,23 @@
 // import axios from "axios";
-import { userPositionJson } from "../test/jsonData";
+import { buildingJson, floorJson, locationJson } from "../test/jsonData";
 
-// export const getPosition = async (id: number) => {
-//   const res = await axios.get(`/api/worker/get/loc/${id}`);
-//   return res.data;
-// };
-
-export const getMap = async (id: number) => {
+export const getLocation = async (userId: number) => {
   let res = null;
   await setTimeout(() => {}, 1000);
-  res = userPositionJson;
+  res = locationJson;
+  return res;
+};
+
+export const getBuilding = async (buildingId: number) => {
+  let res = null;
+  await setTimeout(() => {}, 1000);
+  res = buildingJson;
+  return res;
+};
+
+export const getFloor = async (buidingId: number, floorLevel: number) => {
+  let res = null;
+  await setTimeout(() => {}, 1000);
+  res = floorJson;
   return res;
 };

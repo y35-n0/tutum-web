@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AuthUser } from "../../../@types/authTypes";
+import { AuthUser } from "../../../types/authTypes";
 import HeaderAuthBox from "./HeaderAuthBox";
 import HeaderAuthLoginContent from "./HeaderAuthLoginContent";
 import HeaderAuthLogoutContent from "./HeaderAuthLogoutContent";

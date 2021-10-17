@@ -3,8 +3,8 @@ import { select } from "d3";
 import { scaleLinear } from "d3-scale";
 import { useQuery } from "react-query";
 import { deserialize } from "typescript-json-serializer";
-import { Position } from "../../@types/mapAPITypes";
-import { getMap } from "../../api/mapApi";
+import { Location } from "../../types/mapTypes";
+import { getLocation } from "../../api/mapApi";
 import _ from "lodash";
 
 const REFETCH_INTERVAL_MS = 1000;
@@ -13,20 +13,21 @@ type Props = {
   targetId: number;
 };
 
+// FIXME: 데이터 구조 변경에 따라 실행 안됨
 const Map: React.FC<Props> = ({ targetId }) => {
   // Fetch position data
-  const { data, error } = useQuery("position", () => getMap(targetId), {
+  const { data, error } = useQuery("position", () => getLocation(targetId), {
     refetchInterval: REFETCH_INTERVAL_MS,
     // FIXME: position이 1초에 3번씩 업데이트 되며 null, null, data를 가지고 있음. position을 변경할 때 nested object도 함께 바뀌기 때문에 발생하는 (floor, building) 문제일 수도 있을 것 같음
     onSuccess: (data) => {
-      const _position = deserialize<Position>(data, Position);
+      const _position = deserialize<Location>(data, Location);
       if (!_.isEqual(_position, position)) {
         setPosition(_position);
       }
     },
   });
 
-  const [position, setPosition] = useState<Position | null>(null);
+  const [position, setPosition] = useState<Location | null>(null);
 
   const svgRef = useRef(null);
 
