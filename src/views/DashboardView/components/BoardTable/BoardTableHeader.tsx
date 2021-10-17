@@ -11,6 +11,7 @@ const headerStyle = css`
 export type BoardTableHeaderItemContent = {
   id: string;
   name: string;
+  widthPercentage?: number;
 };
 
 type Props = {
@@ -21,9 +22,17 @@ const BoardTableHeader: React.FC<Props> = (props) => {
   return (
     <thead>
       <tr>
-        {props.items.map((headerName) => (
-          <th css={headerStyle} key={headerName.id}>
-            {headerName.name}
+        {props.items.map((item) => (
+          <th
+            css={[
+              headerStyle,
+              css`
+                width: ${item.widthPercentage ?? 10}%;
+              `,
+            ]}
+            key={item.id}
+          >
+            {item.name}
           </th>
         ))}
       </tr>

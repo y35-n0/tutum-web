@@ -1,13 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEventHandler } from "react";
-import { DANGER_LEVEL_COLOR } from "../../../common/GlobalStyle";
 
 const checkboxStyle = css`
   display: none;
 `;
 
-// FIXME: add danger styling
 const boxStyle = css`
   width: 275px;
   height: 180px;
@@ -28,11 +26,11 @@ const boxStyle = css`
 `;
 
 const boxDangerStyle = css`
-  border: 2px solid ${DANGER_LEVEL_COLOR["위험"]};
-  color: ${DANGER_LEVEL_COLOR["위험"]};
+  border: 2px solid var(--danger-color);
+  color: var(--danger-color);
 
   input[type="checkbox"]:checked + & {
-    border: none;
+    background: var(--danger-color);
   }
 `;
 
@@ -74,9 +72,7 @@ const BoardCountStatusCard: React.FC<Props> = (props) => {
         css={checkboxStyle}
       />
       <div
-        css={
-          props.item.content === "위험" ? [boxStyle, boxDangerStyle] : boxStyle
-        }
+        css={props.item.id === "danger" ? [boxStyle, boxDangerStyle] : boxStyle}
       >
         <span css={titleStyle}>{props.item.content}</span>
         <span css={valueStyle}>{props.item.count}</span>

@@ -12,6 +12,8 @@ const innerDivStyle = css`
   margin-right: 20px;
   align-items: center;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 300;
 `;
 
 const colorDivStyle = css`
@@ -48,12 +50,11 @@ const BoardCountEmployeeLegendItem: React.FC<Props> = (props) => {
       />
       <div
         css={css`
-          ${innerDivStyle}
-          color: ${EMPLOYEE_TYPE_COLOR[props.item.id]};
+          ${innerDivStyle} color: ${EMPLOYEE_TYPE_COLOR[props.item.id]};
         `}
       >
         <div css={colorDivStyle} />
-        <span className="graphTitle-value">
+        <span>
           {props.item.content} : {props.item.count}
         </span>
       </div>

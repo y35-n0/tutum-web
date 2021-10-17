@@ -46,6 +46,7 @@ const tmpHeaderItems: BoardTableHeaderItemContent[] = [
   {
     id: "timestamp",
     name: "발생시간",
+    widthPercentage: 18,
   },
   {
     id: "dangerLevel",

@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { Global, css } from "@emotion/react";
 import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 
 export const formattingDate = (date: Date): string => {
-  return format(date, "yyyy.MM.dd ccc aa hh:mm:ss");
+  return format(date, "yyyy.MM.dd (ccc)  aa hh:mm:ss", { locale: ko });
 };
 
 export const DANGER_LEVEL_COLOR: { [name: string]: string } = {
@@ -28,6 +29,7 @@ const GlobalStyle: React.FC = (props) => {
 
         :root {
           --title-color: #0b4ca3;
+          --danger-color: ${DANGER_LEVEL_COLOR["위험"]};
           --box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.05);
           --width: 1280px;
         }

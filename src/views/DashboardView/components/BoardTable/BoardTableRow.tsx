@@ -37,6 +37,7 @@ const BoardTableRow: React.FC<Props> = (props) => {
       <td
         css={css`
           color: ${DANGER_LEVEL_COLOR[props.item.dangerLevel]};
+          font-weight: 500;
         `}
       >
         {props.item.dangerLevel}
