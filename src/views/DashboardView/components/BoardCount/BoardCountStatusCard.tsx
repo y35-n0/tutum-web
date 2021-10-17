@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEventHandler } from "react";
+import { DANGER_LEVEL_COLOR } from "../../../common/GlobalStyle";
 
 const checkboxStyle = css`
   display: none;
@@ -26,6 +27,15 @@ const boxStyle = css`
   }
 `;
 
+const boxDangerStyle = css`
+  border: 2px solid ${DANGER_LEVEL_COLOR["위험"]};
+  color: ${DANGER_LEVEL_COLOR["위험"]};
+
+  input[type="checkbox"]:checked + & {
+    border: none;
+  }
+`;
+
 const titleStyle = css`
   font-size: 20px;
   font-weight: 500;
@@ -42,7 +52,6 @@ export type BoardCountStatusCardContent = {
   value: string;
   content: string;
   count: number;
-  isDanger: boolean;
 };
 
 type Props = {
@@ -52,6 +61,7 @@ type Props = {
 };
 
 const BoardCountStatusCard: React.FC<Props> = (props) => {
+  console.log();
   return (
     <label>
       <input
@@ -63,7 +73,11 @@ const BoardCountStatusCard: React.FC<Props> = (props) => {
         onChange={props.handleChange}
         css={checkboxStyle}
       />
-      <div css={boxStyle}>
+      <div
+        css={
+          props.item.content === "위험" ? [boxStyle, boxDangerStyle] : boxStyle
+        }
+      >
         <span css={titleStyle}>{props.item.content}</span>
         <span css={valueStyle}>{props.item.count}</span>
       </div>

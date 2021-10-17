@@ -12,8 +12,7 @@ const tempUser = {
   userName: "관리자",
 };
 
-// FIXME:
-// - user 쿠키로 가져오기
+// TODO: set user
 const Header: React.FC = () => {
   const [user, setUser] = useState<AuthUser>(tempUser);
 

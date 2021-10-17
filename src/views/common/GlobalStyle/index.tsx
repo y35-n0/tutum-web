@@ -1,6 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { Global, css } from "@emotion/react";
 
+export const DANGER_LEVEL_COLOR: { [name: string]: string } = {
+  위험: "#FF0000",
+  경고: "#FF9100",
+  주의: "#555",
+};
+
+export const EMPLOYEE_TYPE_COLOR: { [name: string]: string } = {
+  working: "#3F8CFF",
+  rest: "#0EC07F",
+  visitor: "#FFB03D",
+  off: "#AAA",
+  undefined: "#FF7A2D",
+};
+
 const GlobalStyle: React.FC = (props) => {
   return (
     <Global

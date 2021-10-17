@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEventHandler } from "react";
+import { EMPLOYEE_TYPE_COLOR } from "../../../common/GlobalStyle";
 
 const checkboxStyle = css`
   display: none;
@@ -11,16 +12,13 @@ const innerDivStyle = css`
   margin-right: 20px;
   align-items: center;
   cursor: pointer;
-  color: #000;
 `;
 
-// TODO: color
 const colorDivStyle = css`
   width: 10px;
   height: 10px;
   border-radius: 100px;
   margin-right: 6px;
-  background: #000;
 `;
 
 export type BoardCountEmployeeLegendItemContent = {
@@ -48,7 +46,12 @@ const BoardCountEmployeeLegendItem: React.FC<Props> = (props) => {
         onChange={props.handleChange}
         css={checkboxStyle}
       />
-      <div css={innerDivStyle}>
+      <div
+        css={css`
+          ${innerDivStyle}
+          color: ${EMPLOYEE_TYPE_COLOR[props.item.id]};
+        `}
+      >
         <div css={colorDivStyle} />
         <span className="graphTitle-value">
           {props.item.content} : {props.item.count}

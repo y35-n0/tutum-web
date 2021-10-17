@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 const boxStyle = css`
   width: 100%;
-  cellspacing: 0;
+  border-spacing: 0;
 `;
 
 const BoardTableInTable: React.FC = (props) => {

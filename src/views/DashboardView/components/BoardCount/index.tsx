@@ -11,7 +11,6 @@ import CountBoardEmployeeLegendBox from "./BoardCountEmployeeLegendBox";
 import BoardCountEmployeeLegendItem, {
   BoardCountEmployeeLegendItemContent,
 } from "./BoardCountEmployeeLegendItem";
-import _ from "lodash";
 
 // FIXME: setData
 const tmpStatusItems: BoardCountStatusCardContent[] = [
@@ -20,42 +19,36 @@ const tmpStatusItems: BoardCountStatusCardContent[] = [
     value: "comprehensive",
     content: "종합",
     count: 6,
-    isDanger: false,
   },
   {
     id: "danger",
     value: "danger",
     content: "위험",
     count: 2,
-    isDanger: true,
   },
   {
     id: "unidentified",
     value: "unidentified",
     content: "미확인",
     count: 3,
-    isDanger: false,
   },
   {
     id: "communication",
     value: "communication",
     content: "통신 이상",
     count: 1,
-    isDanger: false,
   },
   {
     id: "health",
     value: "health",
     content: "건강 이상",
     count: 2,
-    isDanger: false,
   },
   {
     id: "nature",
     value: "nature",
     content: "환경 이상",
     count: 6,
-    isDanger: false,
   },
 ];
 
@@ -138,7 +131,6 @@ const CountBoard: React.FC = () => {
     }
   };
 
-  // FIXME: legend row
   return (
     <BoardCountBox>
       <BoardCountStatusBox>
