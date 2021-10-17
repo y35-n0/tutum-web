@@ -5,7 +5,7 @@ const MapViewTest: React.FC = () => {
   return (
     <div className="App">
       {/* FIXME: targetID 수정 */}
-      <MapView targetId={1} />
+      <MapView userId={1} />
     </div>
   );
 };

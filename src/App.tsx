@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import DashboardTest from "./test/DashboardTest";
+import MapViewTest from "./test/MapViewTest";
+// import DashboardTest from "./test/DashboardTest";
 
 function App() {
   return (
     <div className="App">
-      <DashboardTest />
+      {/* <DashboardTest /> */}
+      <MapViewTest />
     </div>
   );
 }

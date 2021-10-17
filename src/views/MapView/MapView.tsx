@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Map from "./Map";
 
 type MapViewProps = {
-  targetId: number;
+  userId: number;
 };
 
-const MapView: React.FC<MapViewProps> = ({ targetId }) => {
+const MapView: React.FC<MapViewProps> = (props) => {
   const [isLoading, setIsLoading] = useState<boolean>(() => {
     // FIXME: true;
     return false;
@@ -16,7 +16,7 @@ const MapView: React.FC<MapViewProps> = ({ targetId }) => {
     // - isLoading
   }, []);
 
-  return <>{isLoading ? null : <Map targetId={targetId} />}</>;
+  return <>{isLoading ? null : <Map userId={props.userId} />}</>;
 };
 
 export default MapView;

@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { ChangeEvent, useEffect, useState } from "react";
 import { formattingDate } from "../GlobalStyle";
 import NavigatorAndTimeBox from "./NavigatorAndTimeBox";

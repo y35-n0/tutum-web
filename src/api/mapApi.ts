@@ -1,10 +1,10 @@
 // import axios from "axios";
 import { buildingJson, floorJson, locationJson } from "../test/jsonData";
 
-export const getLocation = async (userId: number) => {
+export const getLocation = async (userId: number, forTest: number = 0) => {
   let res = null;
   await setTimeout(() => {}, 1000);
-  res = locationJson;
+  res = locationJson[forTest];
   return res;
 };
 

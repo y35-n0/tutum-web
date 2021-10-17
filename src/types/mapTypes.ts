@@ -1,4 +1,5 @@
 import { JsonProperty, Serializable } from "typescript-json-serializer";
+import { getBuilding, getFloor, getLocation } from "../api/mapApi";
 
 // 가로세로 크기
 @Serializable()
@@ -43,7 +44,11 @@ export class Image {
 export class Floor {
   constructor(
     @JsonProperty()
-    public readonly floor: number, // 층수
+    public readonly buildingId: number, // 빌딩 번호
+    @JsonProperty()
+    public readonly level: number, // 층수
+    @JsonProperty()
+    public readonly name: string, // 층수명
     @JsonProperty()
     public readonly img: Image // 평면도 img src
   ) {}
@@ -51,7 +56,7 @@ export class Floor {
 
 // 층별 높이 정보
 @Serializable()
-export class FloorHeigh {
+export class FloorHeight {
   constructor(
     @JsonProperty()
     public readonly level: number, // 층수
@@ -75,7 +80,7 @@ export class Building {
     @JsonProperty()
     public readonly size: Size,
     @JsonProperty()
-    public readonly floorHeightInfo: FloorHeigh[]
+    public readonly floorHeightInfo: FloorHeight[]
   ) {}
 }
 
@@ -92,9 +97,6 @@ export class Location {
     @JsonProperty()
     public readonly buildingId: number, // 빌딩 Id
     @JsonProperty()
-    public readonly updated: Date, // 업데이트 시간
-
-    public floor?: Floor, // 층수 정보
-    public building?: Building // 빌딩 정보
+    public readonly updated: Date // 업데이트 시간
   ) {}
 }

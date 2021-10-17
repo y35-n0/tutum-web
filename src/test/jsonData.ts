@@ -1,13 +1,22 @@
 // 지도
 // 사용자 위치 가져오기
 // Input: userID
-export const locationJson = {
-  x: 200,
-  y: 100,
-  z: 1,
-  buildingId: 0,
-  updated: "2021-09-30 19:44",
-};
+export const locationJson = [
+  {
+    x: 200,
+    y: 100,
+    z: -100,
+    buildingId: 0,
+    updated: "2021-09-30 19:44",
+  },
+  {
+    x: 200,
+    y: 100,
+    z: -102,
+    buildingId: 0,
+    updated: "2021-09-30 19:45",
+  },
+];
 
 // 빌딩 정보 가져오기
 // Input : buidingId
