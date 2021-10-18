@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getBuilding, getFloor, getLocation } from "../api/mapApi";
 import { Building, FloorExtended } from "../types/mapTypes";
 
-type TLocationExtended = {
+export type TLocationExtended = {
   userId: number;
   x?: number; // x
   y?: number; // y
