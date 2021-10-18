@@ -9,7 +9,7 @@ type Props = {
   userId: number;
 };
 
-// FIXME: every seconds draw new circle
+// FIXME: seperate file to presenter and container
 const Map: React.FC<Props> = (props) => {
   const [location, updateLocation] = useLocation(props.userId);
   const svgRef = useRef(null);
@@ -63,18 +63,19 @@ const Map: React.FC<Props> = (props) => {
 
     // image
     svg
-      .append("image")
-      .attr("id", "background_map_img")
+      .selectAll("#backgroundMapImg")
+      .data([location])
+      .join("image")
+      .attr("id", "backgroundMapImg")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", location.floor.img.size.width)
-      .attr("height", location.floor.img.size.height)
-      .attr("xlink:href", location.floor.img.url);
+      // .attr("width", location.floor.img.size.width)
+      // .attr("height", location.floor.img.size.height)
+      .attr("xlink:href", (d) => d.floor!.img.url);
   }, [location.floor]);
 
   // location Marker
   // When location data or floor data updated, draw location marker.
-  // FIXME: when data fetcted, window refeshes.
   useEffect(() => {
     if (!location.floor) return;
 
@@ -82,10 +83,12 @@ const Map: React.FC<Props> = (props) => {
     // location
 
     svg
-      .append("circle")
-      .attr("id", "user_location")
-      .attr("cx", xScale(location.x))
-      .attr("cy", location.floor.img.size.height - yScale(location.y)!)
+      .selectAll("#userLocation")
+      .data([location])
+      .join("circle")
+      .attr("id", "userLocation")
+      .attr("cx", (d) => xScale(d.x))
+      .attr("cy", (d) => d.floor!.img.size.height - yScale(d.y)!)
       .attr("r", 8)
       .style("fill", "red")
       .style("stroke", "black");

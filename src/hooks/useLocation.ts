@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useState } from "react";
 import { getBuilding, getFloor, getLocation } from "../api/mapApi";
 import FloorExtended from "../types/FloorExtended";
@@ -63,7 +64,7 @@ const useLocation = (
       await _setFloor();
     }
 
-    setLocation(_location);
+    if (!_.isEqual(_location, location)) setLocation(_location);
   };
 
   return [location, updateLocation];
