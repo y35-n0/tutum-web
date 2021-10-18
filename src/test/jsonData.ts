@@ -11,7 +11,7 @@ export const locationJson = [
   },
   {
     x: 200,
-    y: 100,
+    y: 101,
     z: -102,
     buildingId: 0,
     updated: "2021-09-30 19:45",

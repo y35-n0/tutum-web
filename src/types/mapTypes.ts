@@ -1,6 +1,4 @@
 import { JsonProperty, Serializable } from "typescript-json-serializer";
-import { getBuilding, getFloor, getLocation } from "../api/mapApi";
-
 // 가로세로 크기
 @Serializable()
 export class Size {

@@ -1,6 +1,7 @@
-import LocationExtended from "../types/LocationExtended";
+import useLocation from "../hooks/useLocation";
 
-(() => {
-  let locationExtended = new LocationExtended({ userId: 1 });
+(async () => {
+  let [locationExtended, updateLocation] = useLocation(1);
+  await updateLocation();
   console.dir(locationExtended, { depth: 5 });
 })();
