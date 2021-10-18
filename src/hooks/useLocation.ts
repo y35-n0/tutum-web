@@ -1,8 +1,7 @@
 import _ from "lodash";
 import { useState } from "react";
 import { getBuilding, getFloor, getLocation } from "../api/mapApi";
-import FloorExtended from "../types/FloorExtended";
-import { Building } from "../types/mapTypes";
+import { Building, FloorExtended } from "../types/mapTypes";
 
 type TLocationExtended = {
   userId: number;
