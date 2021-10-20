@@ -4,7 +4,7 @@ import { getBuilding, getFloor, getLocation } from "../api/mapApi";
 import { Building, FloorExtended } from "../types/mapTypes";
 
 export type TLocationExtended = {
-  userId: number;
+  userId: string;
   x?: number; // x
   y?: number; // y
   building?: Building; // 빌딩 Id
@@ -14,7 +14,7 @@ export type TLocationExtended = {
 
 // FIXME: everytime updated
 const useLocation = (
-  userId: number
+  userId: string
 ): [TLocationExtended, () => Promise<void>] => {
   const InitialData = { userId: userId };
   const [location, setLocation] = useState<TLocationExtended>(InitialData);

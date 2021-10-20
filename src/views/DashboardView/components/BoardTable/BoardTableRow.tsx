@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { MouseEventHandler } from "react";
 import { DANGER_LEVEL_COLOR } from "../../../common/GlobalStyle";
 
 const trStyle = css`
@@ -15,11 +16,12 @@ const trStyle = css`
   }
 `;
 
-export type TableBoardItem = {
+export type BoardTableItem = {
   id: number;
   timestamp: string;
   dangerLevel: string;
   content: string;
+  userId: string;
   userName: string;
   userType: string;
   workingCondition: string;
@@ -27,12 +29,13 @@ export type TableBoardItem = {
 };
 
 type Props = {
-  item: TableBoardItem;
+  item: BoardTableItem;
+  handleClick: MouseEventHandler;
 };
 
 const BoardTableRow: React.FC<Props> = (props) => {
   return (
-    <tr className="tbody-tr" css={trStyle}>
+    <tr className="tbody-tr" css={trStyle} onClick={props.handleClick}>
       <td>{props.item.timestamp}</td>
       <td
         css={css`

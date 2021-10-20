@@ -1,20 +1,23 @@
 import { useState } from "react";
-import TableBoardTableBody from "./BoardTableBody";
+import BoardTableBody from "./BoardTableBody";
 import BoardTableBox from "./BoardTableBox";
-import TableBoardTableHeader, {
+import BoardTableHeader, {
   BoardTableHeaderItemContent,
 } from "./BoardTableHeader";
-import TableBoardTableRow, { TableBoardItem } from "./BoardTableRow";
+import BoardTableRow, { BoardTableItem } from "./BoardTableRow";
 import BoardTableTitle from "./BoardTableTitle";
 import BoardTableInTable from "./BoardTableInTable";
 import { formattingDate } from "../../../common/GlobalStyle";
+import Popout from "../../../common/Popout";
+import MapView from "../../../MapView";
 
-const tmpStatusItems: TableBoardItem[] = [
+const tmpStatusItems: BoardTableItem[] = [
   {
     id: 1,
     timestamp: formattingDate(new Date()),
     dangerLevel: "위험",
     content: "심박수 이상",
+    userId: "1",
     userName: "홍길동",
     userType: "근로자",
     workingCondition: "업무 중",
@@ -25,6 +28,7 @@ const tmpStatusItems: TableBoardItem[] = [
     timestamp: formattingDate(new Date()),
     dangerLevel: "경고",
     content: "심박수 이상",
+    userId: "2",
     userName: "홍길동",
     userType: "근로자",
     workingCondition: "업무 중",
@@ -35,6 +39,7 @@ const tmpStatusItems: TableBoardItem[] = [
     timestamp: formattingDate(new Date()),
     dangerLevel: "주의",
     content: "심박수 이상",
+    userId: "3",
     userName: "홍길동",
     userType: "근로자",
     workingCondition: "업무 중",
@@ -74,24 +79,58 @@ const tmpHeaderItems: BoardTableHeaderItemContent[] = [
   },
 ];
 
+type PopoutItem = {
+  name: string;
+  id: string;
+};
+
 const TableBoard: React.FC = () => {
   const [headerItems, setHeaderItems] =
     useState<BoardTableHeaderItemContent[]>(tmpHeaderItems);
   const [statusItems, setStatusItems] =
-    useState<TableBoardItem[]>(tmpStatusItems);
+    useState<BoardTableItem[]>(tmpStatusItems);
+
+  const [popoutItem, setPopoutItem] = useState<PopoutItem | null>(null);
+  const handleClick = (item: BoardTableItem) => {
+    setPopoutItem({
+      name: item.userName,
+      id: item.userId,
+    });
+  };
 
   return (
-    <BoardTableBox>
-      <BoardTableTitle />
-      <BoardTableInTable>
-        <TableBoardTableHeader items={headerItems} />
-        <TableBoardTableBody>
-          {statusItems.map((item) => (
-            <TableBoardTableRow key={item.id} item={item} />
-          ))}
-        </TableBoardTableBody>
-      </BoardTableInTable>
-    </BoardTableBox>
+    <>
+      {popoutItem && (
+        <Popout
+          title={`${popoutItem.name}의 현재 위치`}
+          url=""
+          name="location"
+          closeWindow={() => {
+            setPopoutItem(null);
+          }}
+        >
+          <MapView userId={popoutItem.id} />
+        </Popout>
+      )}
+      <BoardTableBox>
+        <BoardTableTitle />
+        <BoardTableInTable>
+          <BoardTableHeader items={headerItems} />
+          <BoardTableBody>
+            {statusItems.map((item) => (
+              <BoardTableRow
+                key={item.id}
+                item={item}
+                handleClick={() => {
+                  handleClick(item);
+                  console.log(item);
+                }}
+              />
+            ))}
+          </BoardTableBody>
+        </BoardTableInTable>
+      </BoardTableBox>
+    </>
   );
 };
 export default TableBoard;

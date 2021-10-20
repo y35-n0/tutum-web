@@ -3,7 +3,7 @@ import { getBuilding, getFloor, getLocation } from "../api/mapApi";
 
 (async () => {
   let res;
-  res = await getLocation(1);
+  res = await getLocation("1");
   console.dir(res, { depth: 5 });
 })();
 

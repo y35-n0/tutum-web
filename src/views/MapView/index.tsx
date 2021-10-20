@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useLocation from "../../hooks/useLocation";
+import GlobalStyle, { formattingDate } from "../common/GlobalStyle";
 import Map from "./Map";
 import MapFooter from "./MapFooter";
 import MapHeader from "./MapHeader";
@@ -8,7 +9,7 @@ import MapViewBox from "./MapViewBox";
 const REFETCH_INTERVAL_MS = 1000;
 
 type MapViewProps = {
-  userId: number;
+  userId: string;
 };
 
 const MapView: React.FC<MapViewProps> = (props) => {
@@ -32,7 +33,7 @@ const MapView: React.FC<MapViewProps> = (props) => {
       <Map location={location} />
       <MapFooter
         floorName={location.floor?.name}
-        timestamp={location.updated?.toString()}
+        timestamp={formattingDate(location.updated ?? new Date())}
       />
     </MapViewBox>
   );
