@@ -1,23 +1,37 @@
 // import axios from "axios";
-import { buildingJson, floorJson, locationJson } from "../test/jsonData";
+import axios from "axios";
+
+// FIXME: CROS
+const instance = axios.create({
+  baseURL: "http://3.34.236.155:8000",
+});
 
 export const getLocation = async (userId: string, forTest: number = 0) => {
-  let res = null;
-  await setTimeout(() => {}, 1000);
-  res = locationJson[forTest];
-  return res;
+  let data;
+  try {
+    data = instance.get(`worker/get/loc&${userId}`);
+  } catch (error) {
+    console.error(error);
+  }
+  return data;
 };
 
 export const getBuilding = async (buildingId: number) => {
-  let res = null;
-  await setTimeout(() => {}, 1000);
-  res = buildingJson;
-  return res;
+  let data;
+  try {
+    data = instance.get(`building/getBuilding&${buildingId}`);
+  } catch (error) {
+    console.error(error);
+  }
+  return data;
 };
 
-export const getFloor = async (buidingId: number, floorLevel: number) => {
-  let res = null;
-  await setTimeout(() => {}, 1000);
-  res = floorJson;
-  return res;
+export const getFloor = async (buildingId: number, floorLevel: number) => {
+  let data;
+  try {
+    data = instance.get(`building/getFloor&${buildingId}&${floorLevel}`);
+  } catch (error) {
+    console.error(error);
+  }
+  return data;
 };
