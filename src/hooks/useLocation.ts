@@ -1,7 +1,8 @@
 import _ from "lodash";
 import { useState } from "react";
+import { deserialize } from "typescript-json-serializer";
 import { getBuilding, getFloor, getLocation } from "../api/mapApi";
-import { Building, FloorExtended } from "../types/mapTypes";
+import { Building, Floor, FloorExtended, Location } from "../types/mapTypes";
 
 export type TLocationExtended = {
   userId: string;
@@ -20,37 +21,42 @@ const useLocation = (
   const [location, setLocation] = useState<TLocationExtended>(InitialData);
 
   const updateLocation = async () => {
-    let _location = { ...location };
-    const _rawLocation = await getLocation(_location.userId);
+    let _newLocation = { ...location };
+    const _rawLocation = await getLocation(_newLocation.userId);
+    const _objectLocation = new Location(_rawLocation);
 
     const _setFloor = async () => {
-      const level = _location.building!.floorHeightInfo.find(
+      const level = _newLocation.building!.floorHeightInfo.find(
         (info) =>
-          info.heightLow <= _rawLocation.z && info.heightHigh > _rawLocation.z
+          info.heightLow <= _objectLocation.z &&
+          info.heightHigh > _objectLocation.z
       )?.level;
       if (level) {
-        const floor = await getFloor(_location.building!.id, level);
-        _location.floor = new FloorExtended(floor, _location.building!);
+        const floorRaw = await getFloor(_newLocation.building!.id, level);
+        _newLocation.floor = new FloorExtended(
+          new Floor(floorRaw),
+          _newLocation.building!
+        );
       }
     };
 
     const _setBuilding = async () => {
-      _location.building = await getBuilding(_rawLocation.buildingId);
+      _newLocation.building = await getBuilding(_objectLocation.buildingId);
     };
 
-    _location.x = _rawLocation.x;
-    _location.y = _rawLocation.y;
-    _location.updated = new Date(_rawLocation.updated);
+    _newLocation.x = _objectLocation.x;
+    _newLocation.y = _objectLocation.y;
+    _newLocation.updated = new Date(_objectLocation.updated);
 
     // 건물이 같음
     if (
-      _location.building &&
-      _location.building.id === _rawLocation.buildingId
+      _newLocation.building &&
+      _newLocation.building.id === _objectLocation.buildingId
     ) {
       if (
-        _location.floor &&
-        _location.floor.heightLow <= _rawLocation.z &&
-        _location.floor.heightHigh >= _rawLocation.z
+        _newLocation.floor &&
+        _newLocation.floor.heightLow <= _objectLocation.z &&
+        _newLocation.floor.heightHigh >= _objectLocation.z
       ) {
       } else {
         // 층수가 다름
@@ -63,7 +69,8 @@ const useLocation = (
       await _setFloor();
     }
 
-    if (!_.isEqual(_location, location)) setLocation(_location);
+    console.log(_newLocation);
+    if (!_.isEqual(_newLocation, location)) setLocation(_newLocation);
   };
 
   return [location, updateLocation];

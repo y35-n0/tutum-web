@@ -123,7 +123,6 @@ const TableBoard: React.FC = () => {
                 item={item}
                 handleClick={() => {
                   handleClick(item);
-                  console.log(item);
                 }}
               />
             ))}

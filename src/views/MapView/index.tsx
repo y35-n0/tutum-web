@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useLocation from "../../hooks/useLocation";
-import GlobalStyle, { formattingDate } from "../common/GlobalStyle";
+import { formattingDate } from "../common/GlobalStyle";
 import Map from "./Map";
 import MapFooter from "./MapFooter";
 import MapHeader from "./MapHeader";

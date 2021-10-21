@@ -1,37 +1,44 @@
 // import axios from "axios";
 import axios from "axios";
+import { Building, FloorRaw, LocationRaw } from "../types/mapTypes";
 
-// FIXME: CROS
-const instance = axios.create({
-  baseURL: "http://3.34.236.155:8000",
-});
+const instance = axios.create({});
 
-export const getLocation = async (userId: string, forTest: number = 0) => {
-  let data;
+export const getLocation = async (userId: string): Promise<LocationRaw> => {
+  let res;
   try {
-    data = instance.get(`worker/get/loc&${userId}`);
+    res = await instance.get(`/api/worker/get/loc&${userId}`);
+    // FIXME: z 수정 지우기
+    res.data.data.z = -1;
   } catch (error) {
     console.error(error);
   }
-  return data;
+  return res?.data.data;
 };
 
-export const getBuilding = async (buildingId: number) => {
-  let data;
+export const getBuilding = async (buildingId: number): Promise<Building> => {
+  let res;
   try {
-    data = instance.get(`building/getBuilding&${buildingId}`);
+    res = await instance.get(`/api/building/getBuilding&${buildingId}`);
+    // FIXME: level 수정 지우기
+    res.data.data.floorHeightInfo[1].level = -1;
   } catch (error) {
     console.error(error);
   }
-  return data;
+  return res?.data.data;
 };
 
-export const getFloor = async (buildingId: number, floorLevel: number) => {
-  let data;
+export const getFloor = async (
+  buildingId: number,
+  floorLevel: number
+): Promise<FloorRaw> => {
+  let res;
   try {
-    data = instance.get(`building/getFloor&${buildingId}&${floorLevel}`);
+    res = await instance.get(
+      `/api/building/getFloor&${buildingId}&${floorLevel}`
+    );
   } catch (error) {
     console.error(error);
   }
-  return data;
+  return res?.data.data;
 };

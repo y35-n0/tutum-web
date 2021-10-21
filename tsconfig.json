@@ -26,5 +26,5 @@
       "module": "CommonJS"
     }
   },
-  "include": ["src"]
+  "include": ["src", "server/app.js"]
 }
