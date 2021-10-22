@@ -1,0 +1,37 @@
+// 근로자 분류
+export enum EMPLOYEE_TYPE {
+  WORKER = 0,
+  VISITOR = 1,
+  UNDEFINED = 2,
+}
+
+export const EMPLOYEE_TYPE_CONTENT: { [key in EMPLOYEE_TYPE]: string } = {
+  [EMPLOYEE_TYPE.WORKER]: "근로자",
+  [EMPLOYEE_TYPE.VISITOR]: "방문객",
+  [EMPLOYEE_TYPE.UNDEFINED]: "알 수 없음",
+};
+// 근무 상태
+export enum WORKING_CONDITION {
+  WORKING = 0,
+  REST = 1,
+  OFF = 2,
+  VISITOR = 3,
+  UNDEFINED = 4,
+}
+
+export const WORKING_CONDITION_CONTENT: { [key in WORKING_CONDITION]: string } =
+  {
+    [WORKING_CONDITION.WORKING]: "업무 중",
+    [WORKING_CONDITION.REST]: "휴식 중",
+    [WORKING_CONDITION.VISITOR]: "방문객",
+    [WORKING_CONDITION.OFF]: "퇴근",
+    [WORKING_CONDITION.UNDEFINED]: "알 수 없음",
+  };
+
+export const WORKING_CONDITION_COLOR: { [key in WORKING_CONDITION]: string } = {
+  [WORKING_CONDITION.WORKING]: "#3F8CFF",
+  [WORKING_CONDITION.REST]: "#0EC07F",
+  [WORKING_CONDITION.VISITOR]: "#FFB03D",
+  [WORKING_CONDITION.OFF]: "#AAA",
+  [WORKING_CONDITION.UNDEFINED]: "#FF7A2D",
+};

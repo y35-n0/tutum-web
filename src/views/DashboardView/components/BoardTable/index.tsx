@@ -10,40 +10,45 @@ import BoardTableInTable from "./BoardTableInTable";
 import { formattingDate } from "../../../common/GlobalStyle";
 import Popout from "../../../common/Popout";
 import MapView from "../../../MapView";
+import {
+  EMPLOYEE_TYPE,
+  WORKING_CONDITION,
+} from "../../../../constants/workingConditionContants";
+import { PROCESSING_STATUS } from "../../../../constants/statusConstants";
 
 const tmpStatusItems: BoardTableItem[] = [
   {
     id: 1,
     timestamp: formattingDate(new Date()),
-    dangerLevel: "위험",
+    level: 3,
     content: "심박수 이상",
     userId: "1",
     userName: "홍길동",
-    userType: "근로자",
-    workingCondition: "업무 중",
-    processingStatus: "미확인",
+    userType: EMPLOYEE_TYPE.WORKER,
+    workingCondition: WORKING_CONDITION.WORKING,
+    processingStatus: PROCESSING_STATUS.UNCHECKED,
   },
   {
     id: 2,
     timestamp: formattingDate(new Date()),
-    dangerLevel: "경고",
+    level: 2,
     content: "심박수 이상",
     userId: "2",
     userName: "홍길동",
-    userType: "근로자",
-    workingCondition: "업무 중",
-    processingStatus: "미확인",
+    userType: EMPLOYEE_TYPE.WORKER,
+    workingCondition: WORKING_CONDITION.WORKING,
+    processingStatus: PROCESSING_STATUS.UNCHECKED,
   },
   {
     id: 3,
     timestamp: formattingDate(new Date()),
-    dangerLevel: "주의",
+    level: 1,
     content: "심박수 이상",
     userId: "3",
     userName: "홍길동",
-    userType: "근로자",
-    workingCondition: "업무 중",
-    processingStatus: "조치 중",
+    userType: EMPLOYEE_TYPE.WORKER,
+    workingCondition: WORKING_CONDITION.WORKING,
+    processingStatus: PROCESSING_STATUS.IN_PROGRESS,
   },
 ];
 
@@ -54,7 +59,7 @@ const tmpHeaderItems: BoardTableHeaderItemContent[] = [
     widthPercentage: 18,
   },
   {
-    id: "dangerLevel",
+    id: "level",
     name: "위험수준",
   },
   {

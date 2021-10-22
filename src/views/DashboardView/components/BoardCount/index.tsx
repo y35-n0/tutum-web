@@ -11,6 +11,7 @@ import CountBoardEmployeeLegendBox from "./BoardCountEmployeeLegendBox";
 import BoardCountEmployeeLegendItem, {
   BoardCountEmployeeLegendItemContent,
 } from "./BoardCountEmployeeLegendItem";
+import { WORKING_CONDITION } from "../../../../constants/workingConditionContants";
 
 // FIXME: setData
 const tmpStatusItems: BoardCountStatusCardContent[] = [
@@ -54,33 +55,23 @@ const tmpStatusItems: BoardCountStatusCardContent[] = [
 
 const tmpEmployeeItems: BoardCountEmployeeLegendItemContent[] = [
   {
-    id: "working",
-    value: "working",
-    content: "업무 중",
+    id: WORKING_CONDITION.WORKING,
     count: 15,
   },
   {
-    id: "rest",
-    value: "rest",
-    content: "휴식 중",
+    id: WORKING_CONDITION.REST,
     count: 5,
   },
   {
-    id: "visitor",
-    value: "visitor",
-    content: "방문객",
+    id: WORKING_CONDITION.VISITOR,
     count: 5,
   },
   {
-    id: "off",
-    value: "off",
-    content: "퇴근",
+    id: WORKING_CONDITION.OFF,
     count: 2,
   },
   {
-    id: "undefined",
-    value: "undefined",
-    content: "알 수 없음",
+    id: WORKING_CONDITION.UNDEFINED,
     count: 2,
   },
 ];
@@ -93,9 +84,9 @@ const CountBoard: React.FC = () => {
   const [checkedStatusItems, setCheckedStatusItems] = useState<Set<string>>(
     new Set()
   );
-  const [checkedEmployeeItems, setCheckedEmployeeItems] = useState<Set<string>>(
-    new Set()
-  );
+  const [checkedEmployeeItems, setCheckedEmployeeItems] = useState<
+    Set<WORKING_CONDITION>
+  >(new Set());
   const [employeeTotal, setEmployeeTotal] = useState<number>(22);
 
   const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -117,7 +108,7 @@ const CountBoard: React.FC = () => {
   };
 
   const handleEmployeeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newVal = e.currentTarget.value;
+    const newVal = +e.currentTarget.id;
     if (checkedEmployeeItems.has(newVal)) {
       setCheckedEmployeeItems((prev) => {
         prev.delete(newVal);
@@ -151,7 +142,7 @@ const CountBoard: React.FC = () => {
             <BoardCountEmployeeLegendItem
               key={item.id}
               item={item}
-              checked={checkedEmployeeItems.has(item.value)}
+              checked={checkedEmployeeItems.has(item.id)}
               handleChange={handleEmployeeChange}
             />
           ))}

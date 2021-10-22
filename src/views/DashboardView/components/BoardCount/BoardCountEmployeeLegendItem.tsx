@@ -1,7 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEventHandler } from "react";
-import { EMPLOYEE_TYPE_COLOR } from "../../../common/GlobalStyle";
+import {
+  WORKING_CONDITION,
+  WORKING_CONDITION_COLOR,
+  WORKING_CONDITION_CONTENT,
+} from "../../../../constants/workingConditionContants";
 
 const checkboxStyle = css`
   display: none;
@@ -24,9 +28,7 @@ const colorDivStyle = css`
 `;
 
 export type BoardCountEmployeeLegendItemContent = {
-  id: string;
-  value: string;
-  content: string;
+  id: WORKING_CONDITION;
   count: number;
 };
 
@@ -42,20 +44,20 @@ const BoardCountEmployeeLegendItem: React.FC<Props> = (props) => {
       <input
         type="checkbox"
         name="boardCountEmployee"
-        id={props.item.id}
-        value={props.item.value}
+        id={props.item.id.toString()}
+        value={props.item.id}
         checked={props.checked}
         onChange={props.handleChange}
         css={checkboxStyle}
       />
       <div
         css={css`
-          ${innerDivStyle} color: ${EMPLOYEE_TYPE_COLOR[props.item.id]};
+          ${innerDivStyle} color: ${WORKING_CONDITION_COLOR[props.item.id]};
         `}
       >
         <div css={colorDivStyle} />
         <span>
-          {props.item.content} : {props.item.count}
+          {WORKING_CONDITION_CONTENT[props.item.id]} : {props.item.count}
         </span>
       </div>
     </label>

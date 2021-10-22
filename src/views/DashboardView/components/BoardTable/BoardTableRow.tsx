@@ -1,7 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { MouseEventHandler } from "react";
-import { DANGER_LEVEL_COLOR } from "../../../common/GlobalStyle";
+import {
+  DANGER_LEVEL,
+  DANGER_LEVEL_COLOR,
+  DANGER_LEVEL_CONTENT,
+  PROCESSING_STATUS,
+  PROCESSING_STATUS_COLOR,
+  PROCESSING_STATUS_CONTENT,
+} from "../../../../constants/statusConstants";
+import {
+  EMPLOYEE_TYPE,
+  EMPLOYEE_TYPE_CONTENT,
+  WORKING_CONDITION,
+  WORKING_CONDITION_CONTENT,
+} from "../../../../constants/workingConditionContants";
 
 const trStyle = css`
   height: 40px;
@@ -19,13 +32,13 @@ const trStyle = css`
 export type BoardTableItem = {
   id: number;
   timestamp: string;
-  dangerLevel: string;
+  level: DANGER_LEVEL;
   content: string;
   userId: string;
   userName: string;
-  userType: string;
-  workingCondition: string;
-  processingStatus: string;
+  userType: EMPLOYEE_TYPE;
+  workingCondition: WORKING_CONDITION;
+  processingStatus: PROCESSING_STATUS;
 };
 
 type Props = {
@@ -39,24 +52,24 @@ const BoardTableRow: React.FC<Props> = (props) => {
       <td>{props.item.timestamp}</td>
       <td
         css={css`
-          color: ${DANGER_LEVEL_COLOR[props.item.dangerLevel]};
+          color: ${DANGER_LEVEL_COLOR[props.item.level]};
           font-weight: 500;
         `}
       >
-        {props.item.dangerLevel}
+        {DANGER_LEVEL_CONTENT[props.item.level]}
       </td>
       <td>{props.item.content}</td>
       <td>{props.item.userName}</td>
-      <td>{props.item.userType}</td>
-      <td>{props.item.workingCondition}</td>
+      <td>{EMPLOYEE_TYPE_CONTENT[props.item.userType]}</td>
+      <td>{WORKING_CONDITION_CONTENT[props.item.workingCondition]}</td>
       <td
         css={css`
-          ${props.item.processingStatus === "미확인"
-            ? "background-color: #ffefd4"
-            : ""}
+          background-color: ${PROCESSING_STATUS_COLOR[
+            props.item.processingStatus
+          ]};
         `}
       >
-        {props.item.processingStatus}
+        {PROCESSING_STATUS_CONTENT[props.item.processingStatus]}
       </td>
     </tr>
   );

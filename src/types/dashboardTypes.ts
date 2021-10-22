@@ -1,4 +1,5 @@
 import { JsonProperty, Serializable } from "typescript-json-serializer";
+import { DANGER_LEVEL } from "../constants/statusConstants";
 
 @Serializable()
 export class State {
@@ -6,7 +7,7 @@ export class State {
     @JsonProperty()
     public readonly content: string,
     @JsonProperty()
-    public readonly level: string
+    public readonly level: DANGER_LEVEL
   ) {}
 }
 
