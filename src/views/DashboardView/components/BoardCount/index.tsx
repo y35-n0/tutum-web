@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useState } from "react";
 import BoardCountStatusBox from "./BoardCountStatusBox";
 import BoardCountStatusCard, {
   BoardCountStatusCardContent,
@@ -12,6 +12,7 @@ import BoardCountEmployeeLegendItem, {
   BoardCountEmployeeLegendItemContent,
 } from "./BoardCountEmployeeLegendItem";
 import { WORKING_CONDITION } from "../../../../constants/workingConditionContants";
+import { AbnormalState } from "../../../../types/dashboardTypes";
 
 // FIXME: setData
 const tmpStatusItems: BoardCountStatusCardContent[] = [
@@ -76,11 +77,26 @@ const tmpEmployeeItems: BoardCountEmployeeLegendItemContent[] = [
   },
 ];
 
-const CountBoard: React.FC = () => {
-  const [statusItems, setStatusItems] =
-    useState<BoardCountStatusCardContent[]>(tmpStatusItems);
-  const [employeeItems, setEmployeeItems] =
-    useState<BoardCountEmployeeLegendItemContent[]>(tmpEmployeeItems);
+type Props = {
+  states: AbnormalState[];
+  handleClick: MouseEventHandler;
+};
+const CountBoard: React.FC<Props> = (props) => {
+  // TODO: status를 필요한 형태로 가공함.
+  const [statusItems, setStatusItems] = useState<BoardCountStatusCardContent[]>(
+    () => {
+      // props.states
+      return tmpStatusItems;
+    }
+  );
+  const [employeeItems, setEmployeeItems] = useState<
+    BoardCountEmployeeLegendItemContent[]
+  >(() => {
+    // props.states
+    return tmpEmployeeItems;
+  });
+
+  // TODO: status에 filtering을 적용함.
   const [checkedStatusItems, setCheckedStatusItems] = useState<Set<string>>(
     new Set()
   );

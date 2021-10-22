@@ -15,6 +15,7 @@ import {
   WORKING_CONDITION,
 } from "../../../../constants/workingConditionContants";
 import { PROCESSING_STATUS } from "../../../../constants/statusConstants";
+import { AbnormalState } from "../../../../types/dashboardTypes";
 
 const tmpStatusItems: BoardTableItem[] = [
   {
@@ -89,11 +90,18 @@ type PopoutItem = {
   id: string;
 };
 
-const TableBoard: React.FC = () => {
+type Props = {
+  states: AbnormalState[];
+};
+
+const TableBoard: React.FC<Props> = (props) => {
   const [headerItems, setHeaderItems] =
     useState<BoardTableHeaderItemContent[]>(tmpHeaderItems);
-  const [statusItems, setStatusItems] =
-    useState<BoardTableItem[]>(tmpStatusItems);
+  // TODO: props.states로 필요에 맞게 데이터 변경
+  const [statusItems, setStatusItems] = useState<BoardTableItem[]>(() => {
+    // props.states
+    return tmpStatusItems;
+  });
 
   const [popoutItem, setPopoutItem] = useState<PopoutItem | null>(null);
   const handleClick = (item: BoardTableItem) => {

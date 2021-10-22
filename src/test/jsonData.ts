@@ -1,5 +1,13 @@
 // 지도
 // 사용자 위치 가져오기
+
+import { DANGER_LEVEL, PROCESSING_STATUS } from "../constants/statusConstants";
+import {
+  EMPLOYEE_TYPE,
+  WORKING_CONDITION,
+} from "../constants/workingConditionContants";
+import { AbnormalState } from "../types/dashboardTypes";
+
 // Input: userID
 export const locationJson = [
   {
@@ -60,43 +68,43 @@ export const floorJson = {
 // 대시보드
 // 이상상태 현황 리스트
 // Input : ..
-export const abnormalStatesJson = [
+export const abnormalStatesJson: AbnormalState[] = [
   // 여러개 씩
   {
     id: 1, // 이상상태 번호
-    timestamp: "2021-06-03 18:02",
-    state: { content: "상태내용1", level: "주의" },
+    timestamp: new Date("2021-06-03 18:02"),
+    state: { content: "상태내용1", level: DANGER_LEVEL.WARNING },
     user: {
       name: "방문객0",
       id: 0, // 사용자 번호
-      title: "방문객",
-      workingCondition: "방문객",
+      title: EMPLOYEE_TYPE.VISITOR,
+      workingCondition: WORKING_CONDITION.VISITOR,
     },
-    actionStatus: "조치 중",
+    actionStatus: PROCESSING_STATUS.IN_PROGRESS,
   },
   {
     id: 2,
-    timestamp: "2021-06-03 18:03",
-    state: { content: "상태내용2", level: "위험" },
+    timestamp: new Date("2021-06-03 18:03"),
+    state: { content: "상태내용2", level: DANGER_LEVEL.DANGER },
     user: {
       name: "근로자0",
       id: 1,
-      title: "근로자",
-      workingCondition: "업무 중",
+      title: EMPLOYEE_TYPE.WORKER,
+      workingCondition: WORKING_CONDITION.WORKING,
     },
-    actionStatus: "미확인",
+    actionStatus: PROCESSING_STATUS.UNCHECKED,
   },
   {
     id: 0,
-    timestamp: "2021-06-03 18:01",
-    state: { content: "상태내용0", level: "경고" },
+    timestamp: new Date("2021-06-03 18:01"),
+    state: { content: "상태내용0", level: DANGER_LEVEL.CAUTION },
     user: {
       name: "근로자1",
       id: 2,
-      title: "근로자",
-      workingCondition: "휴식 중",
+      title: EMPLOYEE_TYPE.WORKER,
+      workingCondition: WORKING_CONDITION.REST,
     },
-    actionStatus: "조치중",
+    actionStatus: PROCESSING_STATUS.IN_PROGRESS,
   },
 ];
 

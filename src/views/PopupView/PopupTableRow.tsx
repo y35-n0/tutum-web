@@ -11,7 +11,7 @@ const contentStyle = css`
   color: #666;
 `;
 const valueStyle = css`
-  width: 200px;
+  width: 250px;
 `;
 
 type Props = {

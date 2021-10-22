@@ -1,10 +1,13 @@
-/** @jsxImportSource @emotion/react */
+/** @jsxImportSource @emotion/react  */
 import { css } from "@emotion/react";
 
-const bodyStyle = css`
-  width: 100%;
+const style = css`
+  z-index: 10;
+  position: absolute;
+  height: 100%;
   overflow: auto;
-  text-align: center;
+  right: 0;
+  top: 0;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -19,8 +22,8 @@ const bodyStyle = css`
   }
 `;
 
-const TableBoardBody: React.FC = (props) => {
-  return <tbody css={bodyStyle}>{props.children}</tbody>;
+const PopupSide: React.FC = (props) => {
+  return <div css={style}>{props.children}</div>;
 };
 
-export default TableBoardBody;
+export default PopupSide;

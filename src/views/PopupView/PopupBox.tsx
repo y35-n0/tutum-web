@@ -2,15 +2,13 @@
 import { css } from "@emotion/react";
 
 const style = css`
-  z-index: 10;
-  position: absolute;
   right: 0;
   top: 0;
   margin: 10px;
   padding: 10px;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const PopupBox: React.FC = (props) => {
