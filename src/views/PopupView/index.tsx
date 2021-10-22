@@ -1,8 +1,6 @@
 import { MouseEventHandler, useState } from "react";
 import {
   DANGER_LEVEL,
-  DANGER_LEVEL_COLOR,
-  DANGER_LEVEL_CONTENT,
   PROCESSING_STATUS,
 } from "../../constants/statusConstants";
 import {
@@ -34,6 +32,7 @@ const tmpState: AbnormalState = {
   actionStatus: PROCESSING_STATUS.UNCHECKED,
 };
 
+// TODO: state to props
 const PopupView: React.FC = () => {
   const [state, setState] = useState<AbnormalState>(tmpState);
 

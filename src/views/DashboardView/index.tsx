@@ -13,10 +13,10 @@ const DashboradView: React.FC = () => {
       <Header />
       <NavigatorAndTime />
       <Wrapper>
+        <PopupView />
         <CountBoard />
         <TableBoard />
       </Wrapper>
-      <PopupView />
     </>
   );
 };
