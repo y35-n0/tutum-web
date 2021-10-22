@@ -1,5 +1,9 @@
 import { JsonProperty, Serializable } from "typescript-json-serializer";
-import { DANGER_LEVEL } from "../constants/statusConstants";
+import { DANGER_LEVEL, PROCESSING_STATUS } from "../constants/statusConstants";
+import {
+  EMPLOYEE_TYPE,
+  WORKING_CONDITION,
+} from "../constants/workingConditionContants";
 
 @Serializable()
 export class State {
@@ -19,9 +23,9 @@ export class User {
     @JsonProperty()
     public readonly id: number,
     @JsonProperty()
-    public readonly type: string,
+    public readonly title: EMPLOYEE_TYPE,
     @JsonProperty()
-    public readonly workingCondition: string
+    public readonly workingCondition: WORKING_CONDITION
   ) {}
 }
 
@@ -37,6 +41,6 @@ export class AbnormalState {
     @JsonProperty()
     public readonly user: User,
     @JsonProperty()
-    public readonly actionStatus: string
+    public readonly actionStatus: PROCESSING_STATUS
   ) {}
 }

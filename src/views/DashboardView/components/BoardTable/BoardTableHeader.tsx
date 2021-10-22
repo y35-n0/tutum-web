@@ -30,7 +30,6 @@ const BoardTableHeader: React.FC<Props> = (props) => {
                 width: ${item.widthPercentage ?? 10}%;
               `,
             ]}
-            key={item.id}
           >
             {item.name}
           </th>

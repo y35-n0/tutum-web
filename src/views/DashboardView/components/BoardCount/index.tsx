@@ -127,7 +127,7 @@ const CountBoard: React.FC = () => {
       <BoardCountStatusBox>
         {statusItems.map((item) => (
           <BoardCountStatusCard
-            key={item.id}
+            key={item.id.toString()}
             item={item}
             checked={checkedStatusItems.has(item.value)}
             handleChange={handleStatusChange}
@@ -140,7 +140,7 @@ const CountBoard: React.FC = () => {
         <CountBoardEmployeeLegendBox>
           {employeeItems.map((item) => (
             <BoardCountEmployeeLegendItem
-              key={item.id}
+              key={item.id.toString()}
               item={item}
               checked={checkedEmployeeItems.has(item.id)}
               handleChange={handleEmployeeChange}
