@@ -14,7 +14,7 @@ const PopupHeader: React.FC<Props> = (props) => {
     <div>
       <h1
         css={css`
-          font-size: 28px;
+          font-size: 20px;
           color: ${DANGER_LEVEL_COLOR[props.level]};
           width: 100%;
           text-align: center;

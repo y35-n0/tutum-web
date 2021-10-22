@@ -1,22 +1,25 @@
 import Header from "../common/Header";
-import Wrapper from "../common/Wrapper";
 import CountBoard from "./components/BoardCount";
 import TableBoard from "./components/BoardTable";
 import GlobalStyle from "../common/GlobalStyle";
 import NavigatorAndTime from "../common/NavigatorAndTime";
 import PopupView from "../PopupView";
+import InWrapper from "../common/Wrapper/InWrapper";
+import OutWrapper from "../common/Wrapper/OutWrapper";
 
 const DashboradView: React.FC = () => {
   return (
     <>
       <GlobalStyle />
       <Header />
-      <NavigatorAndTime />
-      <Wrapper>
+      <OutWrapper>
+        <NavigatorAndTime />
         <PopupView />
-        <CountBoard />
-        <TableBoard />
-      </Wrapper>
+        <InWrapper>
+          <CountBoard />
+          <TableBoard />
+        </InWrapper>
+      </OutWrapper>
     </>
   );
 };

@@ -4,11 +4,13 @@ import { css } from "@emotion/react";
 const wrapperStyle = css`
   width: var(--width);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 `;
 
-const Wrapper1: React.FC = (props) => {
+const InWrapper: React.FC = (props) => {
   return <div css={wrapperStyle}>{props.children}</div>;
 };
 
-export default Wrapper1;
+export default InWrapper;

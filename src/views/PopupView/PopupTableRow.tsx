@@ -3,17 +3,15 @@ import { css } from "@emotion/react";
 
 const rowStyle = css`
   display: flex;
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 12px;
 `;
 const contentStyle = css`
-  width: 60px;
+  width: 100px;
   color: #666;
-  margin-right: 30px;
 `;
 const valueStyle = css`
-  width: 150px;
-  white-space: normal;
+  width: 200px;
 `;
 
 type Props = {

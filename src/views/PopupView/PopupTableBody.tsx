@@ -6,7 +6,7 @@ const style = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 24px 0 8px;
+  margin: 10px 0px;
 `;
 
 const PopupTableBody: React.FC = (props) => {
