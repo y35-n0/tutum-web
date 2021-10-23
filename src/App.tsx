@@ -18,6 +18,10 @@ function App() {
   const [updatedAbnormalStates, updateAbnormalStates] = useAbnormalStates();
 
   useEffect(() => {
+    document.title = "Dashboard - TUTUM";
+  }, []);
+
+  useEffect(() => {
     setAbnormalStates(updatedAbnormalStates);
     const timer = setInterval(async () => {
       await updateAbnormalStates();
