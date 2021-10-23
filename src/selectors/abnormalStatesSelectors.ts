@@ -1,26 +1,28 @@
 import { selector } from "recoil";
 import { abnormalStatesAtom } from "../atoms/abnormalStatesAtoms";
 import {
+  DANGER_LEVEL,
   PROCESSING_STATUS,
   PROCESSING_STATUS_CONTENT,
 } from "../constants/statusConstants";
+import { AbnormalState } from "../types/dashboardTypes";
 
-export const newAbnormalStatesSelector = selector({
+export const newAbnormalStatesSelector = selector<AbnormalState[]>({
   key: "newAbnormalStates",
   get: ({ get }) => {
     const states = get(abnormalStatesAtom);
 
     return states.filter((state) => {
-      return (
-        state.actionStatus ===
-        PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.UNCHECKED]
-      );
+      return state.processingStatus === PROCESSING_STATUS.UNCHECKED;
     });
   },
 });
 
-// TODO: Filter
-// export const filteredAbnormalStatesSelector = selector({
-//   key: "filteredAbnormalStates",
-//   get: ({ get }) => {},
-// });
+export const filteredAbnormalStatesSelector = selector<AbnormalState[]>({
+  key: "filteredAbnormalStates",
+  get: ({ get }) => {
+    const states = get(abnormalStatesAtom);
+    // TODO: Filter
+    return states.filter((state) => state.state.level !== DANGER_LEVEL.GOOD);
+  },
+});

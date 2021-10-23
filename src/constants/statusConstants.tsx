@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 // 위험 단계
 export enum DANGER_LEVEL {
   DANGER = 3,
@@ -31,6 +33,8 @@ export const PROCESSING_STATUS_CONTENT: { [key in PROCESSING_STATUS]: string } =
     [PROCESSING_STATUS.UNCHECKED]: "미확인",
     [PROCESSING_STATUS.IN_PROGRESS]: "조치 중",
   };
+
+export const CONTENT_PROCESSING_STATUS = _.invert(PROCESSING_STATUS_CONTENT);
 
 export const PROCESSING_STATUS_COLOR: {
   [key in PROCESSING_STATUS]: string;

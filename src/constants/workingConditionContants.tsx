@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 // 근로자 분류
 export enum EMPLOYEE_TYPE {
   WORKER = 0,
@@ -10,6 +12,9 @@ export const EMPLOYEE_TYPE_CONTENT: { [key in EMPLOYEE_TYPE]: string } = {
   [EMPLOYEE_TYPE.VISITOR]: "방문객",
   [EMPLOYEE_TYPE.UNDEFINED]: "알 수 없음",
 };
+
+export const CONTENT_EMPLOYEE_TYPE = _.invert(EMPLOYEE_TYPE_CONTENT);
+
 // 근무 상태
 export enum WORKING_CONDITION {
   WORKING = 0,

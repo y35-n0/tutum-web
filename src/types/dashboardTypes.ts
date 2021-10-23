@@ -1,8 +1,12 @@
 import {
+  CONTENT_PROCESSING_STATUS,
   DANGER_LEVEL,
+  PROCESSING_STATUS,
   PROCESSING_STATUS_CONTENT,
 } from "../constants/statusConstants";
 import {
+  CONTENT_EMPLOYEE_TYPE,
+  EMPLOYEE_TYPE,
   EMPLOYEE_TYPE_CONTENT,
   WORKING_CONDITION,
 } from "../constants/workingConditionContants";
@@ -16,7 +20,7 @@ const titleToType = Object.values(EMPLOYEE_TYPE_CONTENT);
 export interface User {
   name: string;
   id: number;
-  title: typeof titleToType[number];
+  type: EMPLOYEE_TYPE;
   workingCondition: WORKING_CONDITION;
 }
 
@@ -30,16 +34,17 @@ export interface AbnormalStateRaw {
     title: typeof titleToType[number];
     workingCondtition: number;
   };
-  actionStatus: typeof actionStatusToType[number];
+  actionStatus: typeof processingStatusToType[number];
 }
 
-const actionStatusToType = Object.values(PROCESSING_STATUS_CONTENT);
+const processingStatusToType = Object.values(PROCESSING_STATUS_CONTENT);
+
 export interface AbnormalState {
   id: number;
   timestamp: Date;
   state: State;
   user: User;
-  actionStatus: typeof actionStatusToType[number];
+  processingStatus: PROCESSING_STATUS;
 }
 
 export const convertAbnormalStateRawToAbnormalState = (
@@ -52,9 +57,9 @@ export const convertAbnormalStateRawToAbnormalState = (
     user: {
       id: raw.user.id,
       name: raw.user.name,
-      title: raw.user.title,
+      type: +CONTENT_EMPLOYEE_TYPE[raw.user.title],
       workingCondition: raw.user.workingCondtition,
     },
-    actionStatus: raw.actionStatus,
+    processingStatus: +CONTENT_PROCESSING_STATUS[raw.actionStatus],
   };
 };
