@@ -1,10 +1,10 @@
 import "../App.css";
-import Map from "../views/PopoutView/Map";
+import MapView from "../views/MapPopout/MapView";
 
 const MapViewTest: React.FC = () => {
   return (
     <div className="App">
-      <Map userId={1} />
+      <MapView userId={1} />
     </div>
   );
 };

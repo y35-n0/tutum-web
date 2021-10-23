@@ -7,7 +7,8 @@ const instance = axios.create({});
 export const getLocation = async (userId: number): Promise<LocationRaw> => {
   let res;
   try {
-    res = await instance.get(`/api/worker/get/loc&${userId}`);
+    // FIXME: 1 -> userId로 수정
+    res = await instance.get(`/api/worker/get/loc&${1}`);
     // FIXME: z 수정 지우기
     res.data.data.z = -1;
   } catch (error) {
