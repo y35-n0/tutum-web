@@ -45,7 +45,7 @@ const valueStyle = css`
   font-weight: 600;
 `;
 
-export type BoardCountStatusCardContent = {
+export type BoardCountStateCardContent = {
   id: string;
   value: string;
   content: string;
@@ -53,12 +53,12 @@ export type BoardCountStatusCardContent = {
 };
 
 type Props = {
-  item: BoardCountStatusCardContent;
+  item: BoardCountStateCardContent;
   checked: boolean;
   handleChange: ChangeEventHandler;
 };
 
-const BoardCountStatusCard: React.FC<Props> = (props) => {
+const BoardCountStateCard: React.FC<Props> = (props) => {
   console.log();
   return (
     <label>
@@ -81,4 +81,4 @@ const BoardCountStatusCard: React.FC<Props> = (props) => {
   );
 };
 
-export default BoardCountStatusCard;
+export default BoardCountStateCard;

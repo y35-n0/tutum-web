@@ -8,16 +8,14 @@ import BoardTableRow, { BoardTableItem } from "./BoardTableRow";
 import BoardTableTitle from "./BoardTableTitle";
 import BoardTableInTable from "./BoardTableInTable";
 import { formattingDate } from "../../../common/GlobalStyle";
-import Popout from "../../../common/Popout";
-import MapView from "../../../MapView";
 import {
   EMPLOYEE_TYPE,
   WORKING_CONDITION,
 } from "../../../../constants/workingConditionContants";
 import { PROCESSING_STATUS } from "../../../../constants/statusConstants";
-import { AbnormalState } from "../../../../types/dashboardTypes";
+import PopoutView, { PopoutItem } from "../../../PopoutView";
 
-const tmpStatusItems: BoardTableItem[] = [
+const tmpStateItems: BoardTableItem[] = [
   {
     id: 1,
     timestamp: formattingDate(new Date()),
@@ -85,25 +83,18 @@ const tmpHeaderItems: BoardTableHeaderItemContent[] = [
   },
 ];
 
-type PopoutItem = {
-  name: string;
-  id: string;
-};
-
-type Props = {
-  states: AbnormalState[];
-};
-
-const TableBoard: React.FC<Props> = (props) => {
+const BoardTable: React.FC = () => {
   const [headerItems, setHeaderItems] =
     useState<BoardTableHeaderItemContent[]>(tmpHeaderItems);
-  // TODO: props.states로 필요에 맞게 데이터 변경
-  const [statusItems, setStatusItems] = useState<BoardTableItem[]>(() => {
-    // props.states
-    return tmpStatusItems;
+  // TODO: get filtered state selector
+  const [stateItems, setStatusItems] = useState<BoardTableItem[]>(() => {
+    return tmpStateItems;
   });
 
+  // TODO: get popout item atom
   const [popoutItem, setPopoutItem] = useState<PopoutItem | null>(null);
+
+  // TODO: set popout item atom
   const handleClick = (item: BoardTableItem) => {
     setPopoutItem({
       name: item.userName,
@@ -111,26 +102,20 @@ const TableBoard: React.FC<Props> = (props) => {
     });
   };
 
+  const handleCloseWindow = (item: PopoutItem | null) => {
+    setPopoutItem(item);
+  };
+
   return (
     <>
-      {popoutItem && (
-        <Popout
-          title={`${popoutItem.name}의 현재 위치`}
-          url=""
-          name="location"
-          closeWindow={() => {
-            setPopoutItem(null);
-          }}
-        >
-          <MapView userId={popoutItem.id} />
-        </Popout>
-      )}
+      {/* FIXME: move popout to app */}
+      <PopoutView item={popoutItem} handleCloseWindow={handleCloseWindow} />
       <BoardTableBox>
         <BoardTableTitle />
         <BoardTableInTable>
           <BoardTableHeader items={headerItems} />
           <BoardTableBody>
-            {statusItems.map((item) => (
+            {stateItems.map((item) => (
               <BoardTableRow
                 key={item.id}
                 item={item}
@@ -145,4 +130,4 @@ const TableBoard: React.FC<Props> = (props) => {
     </>
   );
 };
-export default TableBoard;
+export default BoardTable;

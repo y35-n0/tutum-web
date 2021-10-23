@@ -11,8 +11,8 @@ const boxStyle = css`
   margin-right: 40px;
 `;
 
-const BoardCountStatusBox: React.FC = (props) => {
+const BoardCountStateBox: React.FC = (props) => {
   return <form css={boxStyle}>{props.children}</form>;
 };
 
-export default BoardCountStatusBox;
+export default BoardCountStateBox;

@@ -79,11 +79,8 @@ const tmpStates: AbnormalState[] = [
     actionStatus: PROCESSING_STATUS.UNCHECKED,
   },
 ];
-
-type Props = {
-  states: AbnormalState[];
-};
-const PopupView: React.FC<Props> = (props) => {
+const PopupView: React.FC = () => {
+  // TODO: get new state selector
   const [states, setStates] = useState<AbnormalState[]>(tmpStates);
 
   // TODO: 확인 및 popup 닫기

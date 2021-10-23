@@ -10,8 +10,8 @@ const graphStyle = css`
   border-radius: 100px;
 `;
 
-const CountBoardEmployeeGraph: React.FC = () => {
+const BoardCountEmployeeGraph: React.FC = () => {
   return <div css={graphStyle}></div>;
 };
 
-export default CountBoardEmployeeGraph;
+export default BoardCountEmployeeGraph;
