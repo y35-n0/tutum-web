@@ -1,4 +1,3 @@
-import { useState } from "react";
 import MapView from "./MapView";
 import Popout from "../common/Popout";
 import { useRecoilState } from "recoil";

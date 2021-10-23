@@ -4,7 +4,7 @@ import {
   DANGER_LEVEL,
   DANGER_LEVEL_COLOR,
   DANGER_LEVEL_CONTENT,
-} from "../../constants/statusConstants";
+} from "../../constants/stateConstants";
 
 type Props = {
   level: DANGER_LEVEL;

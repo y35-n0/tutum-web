@@ -3,13 +3,13 @@ import {
   DANGER_LEVEL,
   PROCESSING_STATUS,
   PROCESSING_STATUS_CONTENT,
-} from "../constants/statusConstants";
+} from "../constants/stateConstants";
 import {
   CONTENT_EMPLOYEE_TYPE,
   EMPLOYEE_TYPE,
   EMPLOYEE_TYPE_CONTENT,
   WORKING_CONDITION,
-} from "../constants/workingConditionContants";
+} from "../constants/employeeContants";
 
 export interface State {
   content: string;

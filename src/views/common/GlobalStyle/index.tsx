@@ -5,7 +5,7 @@ import { ko } from "date-fns/locale";
 import {
   DANGER_LEVEL,
   DANGER_LEVEL_COLOR,
-} from "../../../constants/statusConstants";
+} from "../../../constants/stateConstants";
 
 export const formattingDate = (date: Date): string => {
   return format(date, "yyyy.MM.dd (ccc)  aa hh:mm:ss", { locale: ko });

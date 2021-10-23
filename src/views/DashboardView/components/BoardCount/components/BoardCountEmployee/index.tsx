@@ -6,7 +6,7 @@ import BoardCountEmployeeLegendBox from "./BoardCountEmployeeLegendBox";
 import BoardCountEmployeeLegendItem, {
   BoardCountEmployeeLegendItemContent,
 } from "./BoardCountEmployeeLegendItem";
-import { WORKING_CONDITION } from "../../../../../../constants/workingConditionContants";
+import { WORKING_CONDITION } from "../../../../../../constants/employeeContants";
 
 const tmpEmployeeItems: BoardCountEmployeeLegendItemContent[] = [
   {

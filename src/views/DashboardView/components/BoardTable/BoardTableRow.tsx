@@ -6,11 +6,11 @@ import {
   DANGER_LEVEL_CONTENT,
   PROCESSING_STATUS_COLOR,
   PROCESSING_STATUS_CONTENT,
-} from "../../../../constants/statusConstants";
+} from "../../../../constants/stateConstants";
 import {
   EMPLOYEE_TYPE_CONTENT,
   WORKING_CONDITION_CONTENT,
-} from "../../../../constants/workingConditionContants";
+} from "../../../../constants/employeeContants";
 import { AbnormalState } from "../../../../types/dashboardTypes";
 import { formattingDate } from "../../../common/GlobalStyle";
 

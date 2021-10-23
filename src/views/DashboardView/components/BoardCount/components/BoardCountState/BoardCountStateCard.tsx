@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ChangeEventHandler } from "react";
+import { DANGER_LEVEL } from "../../../../../../constants/stateConstants";
 
 const checkboxStyle = css`
   display: none;
@@ -45,7 +46,7 @@ const valueStyle = css`
   font-weight: 600;
 `;
 
-export type BoardCountStateCardContent = {
+export type BoardCountStateCardItem = {
   id: string;
   value: string;
   content: string;
@@ -53,13 +54,12 @@ export type BoardCountStateCardContent = {
 };
 
 type Props = {
-  item: BoardCountStateCardContent;
+  item: BoardCountStateCardItem;
   checked: boolean;
   handleChange: ChangeEventHandler;
 };
 
 const BoardCountStateCard: React.FC<Props> = (props) => {
-  console.log();
   return (
     <label>
       <input
@@ -72,7 +72,11 @@ const BoardCountStateCard: React.FC<Props> = (props) => {
         css={checkboxStyle}
       />
       <div
-        css={props.item.id === "danger" ? [boxStyle, boxDangerStyle] : boxStyle}
+        css={
+          props.item.id === DANGER_LEVEL[DANGER_LEVEL.DANGER]
+            ? [boxStyle, boxDangerStyle]
+            : boxStyle
+        }
       >
         <span css={titleStyle}>{props.item.content}</span>
         <span css={valueStyle}>{props.item.count}</span>

@@ -1,55 +1,15 @@
 import { ChangeEventHandler, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { STATE_GROUP } from "../../../../../../constants/stateConstants";
+import { countGroupbyStateTypeItemsSelector } from "../../../../../../selectors/stateSelectors";
 import BoardCountStateBox from "./BoardCountStateBox";
 import BoardCountStateCard, {
-  BoardCountStateCardContent,
+  BoardCountStateCardItem,
 } from "./BoardCountStateCard";
 
-const tmpStatusItems: BoardCountStateCardContent[] = [
-  {
-    id: "comprehensive",
-    value: "comprehensive",
-    content: "종합",
-    count: 6,
-  },
-  {
-    id: "danger",
-    value: "danger",
-    content: "위험",
-    count: 2,
-  },
-  {
-    id: "unidentified",
-    value: "unidentified",
-    content: "미확인",
-    count: 3,
-  },
-  {
-    id: "communication",
-    value: "communication",
-    content: "통신 이상",
-    count: 1,
-  },
-  {
-    id: "health",
-    value: "health",
-    content: "건강 이상",
-    count: 2,
-  },
-  {
-    id: "nature",
-    value: "nature",
-    content: "환경 이상",
-    count: 6,
-  },
-];
-
 const BoardCountState: React.FC = () => {
-  // TODO: get state selector
-  const [stateItems, setStatusItems] = useState<BoardCountStateCardContent[]>(
-    () => {
-      // props.states
-      return tmpStatusItems;
-    }
+  const countGroupbyStateTypeItems: BoardCountStateCardItem[] = useRecoilValue(
+    countGroupbyStateTypeItemsSelector
   );
 
   // TODO: get filter atom
@@ -60,7 +20,7 @@ const BoardCountState: React.FC = () => {
   // TODO: set filter atom
   const handleStatusChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const newVal = e.currentTarget.value;
-    if (newVal === "comprehensive") {
+    if (newVal === STATE_GROUP[STATE_GROUP.COMPREHENSIVE]) {
       setCheckedStatusItems(new Set());
     } else if (checkedStatusItems.has(newVal)) {
       setCheckedStatusItems((prev) => {
@@ -77,9 +37,9 @@ const BoardCountState: React.FC = () => {
 
   return (
     <BoardCountStateBox>
-      {stateItems.map((item) => (
+      {countGroupbyStateTypeItems.map((item) => (
         <BoardCountStateCard
-          key={item.id.toString()}
+          key={item.id}
           item={item}
           checked={checkedStatusItems.has(item.value)}
           handleChange={handleStatusChange}

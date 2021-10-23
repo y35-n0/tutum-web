@@ -5,12 +5,12 @@ import {
   DANGER_LEVEL,
   PROCESSING_STATUS,
   PROCESSING_STATUS_CONTENT,
-} from "../constants/statusConstants";
+} from "../constants/stateConstants";
 import {
   EMPLOYEE_TYPE,
   EMPLOYEE_TYPE_CONTENT,
   WORKING_CONDITION,
-} from "../constants/workingConditionContants";
+} from "../constants/employeeContants";
 import { AbnormalStateRaw } from "../types/dashboardTypes";
 import { Building, FloorRaw, LocationRaw } from "../types/mapTypes";
 

@@ -8,7 +8,7 @@ import BoardTableRow, { BoardTableItem } from "./BoardTableRow";
 import BoardTableTitle from "./BoardTableTitle";
 import BoardTableInTable from "./BoardTableInTable";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { filteredBoardTableItemsSelector } from "../../../../selectors/abnormalStatesSelectors";
+import { filteredBoardTableItemsSelector } from "../../../../selectors/stateSelectors";
 import { MapPopoutStateAtom } from "../../../../atoms/mapAtoms";
 
 const tmpHeaderItems: BoardTableHeaderItemContent[] = [

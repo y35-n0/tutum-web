@@ -5,7 +5,7 @@ import {
   WORKING_CONDITION,
   WORKING_CONDITION_COLOR,
   WORKING_CONDITION_CONTENT,
-} from "../../../../../../constants/workingConditionContants";
+} from "../../../../../../constants/employeeContants";
 
 const checkboxStyle = css`
   display: none;

@@ -1,7 +1,7 @@
 import { MouseEventHandler } from "react";
 import { useRecoilValue } from "recoil";
-import { WORKING_CONDITION_CONTENT } from "../../constants/workingConditionContants";
-import { newAbnormalStatesSelector } from "../../selectors/abnormalStatesSelectors";
+import { WORKING_CONDITION_CONTENT } from "../../constants/employeeContants";
+import { newAbnormalStatesSelector } from "../../selectors/stateSelectors";
 import { AbnormalState } from "../../types/dashboardTypes";
 import { formattingDate } from "../common/GlobalStyle";
 import PopupBox from "./PopupBox";

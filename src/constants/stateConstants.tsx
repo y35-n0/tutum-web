@@ -42,3 +42,22 @@ export const PROCESSING_STATUS_COLOR: {
   [PROCESSING_STATUS.UNCHECKED]: "#ffefd4",
   [PROCESSING_STATUS.IN_PROGRESS]: "transparent",
 };
+
+// 분류
+export enum STATE_GROUP {
+  COMPREHENSIVE = 0,
+  DANGER = 1,
+  UNCHECKED = 2,
+  COMMUNICATION = 3,
+  HEALTH = 4,
+  NATURE = 5,
+}
+
+export const STATE_GROUP_CONTENT: { [key in STATE_GROUP]: string } = {
+  [STATE_GROUP.COMPREHENSIVE]: "종합",
+  [STATE_GROUP.DANGER]: "위험",
+  [STATE_GROUP.UNCHECKED]: "미확인",
+  [STATE_GROUP.COMMUNICATION]: "통신 이상",
+  [STATE_GROUP.HEALTH]: "건강 이상",
+  [STATE_GROUP.NATURE]: "환경 이상",
+};
