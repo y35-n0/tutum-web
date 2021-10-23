@@ -1,31 +1,31 @@
+import { useState } from "react";
 import Map from "./Map";
 import Popout from "./Popout";
 
+const tmpItem: PopoutItem = {
+  name: "근로자",
+  id: 1,
+};
+
 export type PopoutItem = {
   name: string;
-  id: string;
+  id: number;
 };
 
-type Props = {
-  item: PopoutItem | null;
-  handleCloseWindow: Function;
-};
-
-const PopoutView: React.FC<Props> = (props) => {
+const PopoutView: React.FC = () => {
   // TODO: get popout item atom
+  const [item, setItem] = useState<PopoutItem | null>(tmpItem);
 
   // TODO: set popout item atom
   return (
-    props.item && (
+    item && (
       <Popout
-        title={`${props.item.name}의 현재 위치`}
+        title={`${item.name}의 현재 위치`}
         url=""
         name="location"
-        closeWindow={() => {
-          props.handleCloseWindow(null);
-        }}
+        closeWindow={() => setItem(null)}
       >
-        <Map userId={props.item.id} />
+        <Map userId={item.id} />
       </Popout>
     )
   );

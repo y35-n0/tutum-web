@@ -1,14 +1,10 @@
 import { MouseEventHandler, useState } from "react";
+import { WORKING_CONDITION_CONTENT } from "../../constants/workingConditionContants";
+import { abnormalStatesJson } from "../../test/jsonData";
 import {
-  DANGER_LEVEL,
-  PROCESSING_STATUS,
-} from "../../constants/statusConstants";
-import {
-  EMPLOYEE_TYPE,
-  WORKING_CONDITION,
-  WORKING_CONDITION_CONTENT,
-} from "../../constants/workingConditionContants";
-import { AbnormalState } from "../../types/dashboardTypes";
+  AbnormalState,
+  convertAbnormalStateRawToAbnormalState,
+} from "../../types/dashboardTypes";
 import { formattingDate } from "../common/GlobalStyle";
 import PopupBox from "./PopupBox";
 import PopupButton from "./PopupButton";
@@ -17,68 +13,10 @@ import PopupSide from "./PopupSide";
 import PopupTableBody from "./PopupTableBody";
 import PopupTableRow from "./PopupTableRow";
 
-const tmpStates: AbnormalState[] = [
-  {
-    id: 0,
-    timestamp: new Date(),
-    state: {
-      content: "심박수 이상",
-      level: DANGER_LEVEL.DANGER,
-    },
-    user: {
-      id: 0,
-      name: "홍길동",
-      title: EMPLOYEE_TYPE.WORKER,
-      workingCondition: WORKING_CONDITION.WORKING,
-    },
-    actionStatus: PROCESSING_STATUS.UNCHECKED,
-  },
-  {
-    id: 0,
-    timestamp: new Date(),
-    state: {
-      content: "심박수 이상",
-      level: DANGER_LEVEL.DANGER,
-    },
-    user: {
-      id: 0,
-      name: "홍길동",
-      title: EMPLOYEE_TYPE.WORKER,
-      workingCondition: WORKING_CONDITION.WORKING,
-    },
-    actionStatus: PROCESSING_STATUS.UNCHECKED,
-  },
-  {
-    id: 0,
-    timestamp: new Date(),
-    state: {
-      content: "심박수 이상",
-      level: DANGER_LEVEL.DANGER,
-    },
-    user: {
-      id: 0,
-      name: "홍길동",
-      title: EMPLOYEE_TYPE.WORKER,
-      workingCondition: WORKING_CONDITION.WORKING,
-    },
-    actionStatus: PROCESSING_STATUS.UNCHECKED,
-  },
-  {
-    id: 0,
-    timestamp: new Date(),
-    state: {
-      content: "심박수 이상",
-      level: DANGER_LEVEL.DANGER,
-    },
-    user: {
-      id: 0,
-      name: "홍길동",
-      title: EMPLOYEE_TYPE.WORKER,
-      workingCondition: WORKING_CONDITION.WORKING,
-    },
-    actionStatus: PROCESSING_STATUS.UNCHECKED,
-  },
-];
+const tmpStates: AbnormalState[] = abnormalStatesJson.map((state) =>
+  convertAbnormalStateRawToAbnormalState(state)
+);
+
 const PopupView: React.FC = () => {
   // TODO: get new state selector
   const [states, setStates] = useState<AbnormalState[]>(tmpStates);

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { select } from "d3";
 import { scaleLinear } from "d3-scale";
-import { TLocationExtended } from "../../../hooks/useLocation";
+import { LocationExtended } from "../../../types/mapTypes";
 
 type Props = {
-  location: TLocationExtended;
+  location: LocationExtended;
 };
 
 const MapContent: React.FC<Props> = (props) => {

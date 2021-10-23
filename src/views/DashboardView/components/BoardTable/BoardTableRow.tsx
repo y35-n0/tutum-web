@@ -34,7 +34,7 @@ export type BoardTableItem = {
   timestamp: string;
   level: DANGER_LEVEL;
   content: string;
-  userId: string;
+  userId: number;
   userName: string;
   userType: EMPLOYEE_TYPE;
   workingCondition: WORKING_CONDITION;

@@ -4,7 +4,7 @@ import { Building, FloorRaw, LocationRaw } from "../types/mapTypes";
 
 const instance = axios.create({});
 
-export const getLocation = async (userId: string): Promise<LocationRaw> => {
+export const getLocation = async (userId: number): Promise<LocationRaw> => {
   let res;
   try {
     res = await instance.get(`/api/worker/get/loc&${userId}`);

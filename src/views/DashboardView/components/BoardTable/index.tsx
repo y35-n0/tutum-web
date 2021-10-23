@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import BoardTableBody from "./BoardTableBody";
 import BoardTableBox from "./BoardTableBox";
 import BoardTableHeader, {
@@ -21,7 +21,7 @@ const tmpStateItems: BoardTableItem[] = [
     timestamp: formattingDate(new Date()),
     level: 3,
     content: "심박수 이상",
-    userId: "1",
+    userId: 1,
     userName: "홍길동",
     userType: EMPLOYEE_TYPE.WORKER,
     workingCondition: WORKING_CONDITION.WORKING,
@@ -32,7 +32,7 @@ const tmpStateItems: BoardTableItem[] = [
     timestamp: formattingDate(new Date()),
     level: 2,
     content: "심박수 이상",
-    userId: "2",
+    userId: 2,
     userName: "홍길동",
     userType: EMPLOYEE_TYPE.WORKER,
     workingCondition: WORKING_CONDITION.WORKING,
@@ -43,7 +43,7 @@ const tmpStateItems: BoardTableItem[] = [
     timestamp: formattingDate(new Date()),
     level: 1,
     content: "심박수 이상",
-    userId: "3",
+    userId: 3,
     userName: "홍길동",
     userType: EMPLOYEE_TYPE.WORKER,
     workingCondition: WORKING_CONDITION.WORKING,
@@ -95,21 +95,19 @@ const BoardTable: React.FC = () => {
   const [popoutItem, setPopoutItem] = useState<PopoutItem | null>(null);
 
   // TODO: set popout item atom
-  const handleClick = (item: BoardTableItem) => {
+  const handleClick = useCallback((item: BoardTableItem) => {
     setPopoutItem({
       name: item.userName,
       id: item.userId,
     });
-  };
+  }, []);
 
-  const handleCloseWindow = (item: PopoutItem | null) => {
+  const handleCloseWindow = useCallback((item: PopoutItem | null) => {
     setPopoutItem(item);
-  };
+  }, []);
 
   return (
     <>
-      {/* FIXME: move popout to app */}
-      <PopoutView item={popoutItem} handleCloseWindow={handleCloseWindow} />
       <BoardTableBox>
         <BoardTableTitle />
         <BoardTableInTable>

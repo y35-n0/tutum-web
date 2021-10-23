@@ -9,12 +9,11 @@ import MapViewBox from "./MapViewBox";
 const REFETCH_INTERVAL_MS = 1000;
 
 type Props = {
-  userId: string;
+  userId: number;
 };
 
 const Map: React.FC<Props> = (props) => {
   // TODO: get popout item selector
-
   const [location, updateLocation] = useLocation(props.userId);
 
   useEffect(() => {
