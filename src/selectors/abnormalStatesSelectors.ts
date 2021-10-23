@@ -2,6 +2,10 @@ import { selector } from "recoil";
 import { abnormalStatesAtom } from "../atoms/abnormalStatesAtoms";
 import { DANGER_LEVEL, PROCESSING_STATUS } from "../constants/statusConstants";
 import { AbnormalState } from "../types/dashboardTypes";
+import {
+  BoardTableItem,
+  convertAbnormalStateToBoardTableItem,
+} from "../views/DashboardView/components/BoardTable/BoardTableRow";
 
 export const newAbnormalStatesSelector = selector<AbnormalState[]>({
   key: "newAbnormalStates",
@@ -14,11 +18,14 @@ export const newAbnormalStatesSelector = selector<AbnormalState[]>({
   },
 });
 
-export const filteredAbnormalStatesSelector = selector<AbnormalState[]>({
-  key: "filteredAbnormalStates",
+export const filteredBoardTableItemsSelector = selector<BoardTableItem[]>({
+  key: "filteredBoardTableItems",
   get: ({ get }) => {
     const states = get(abnormalStatesAtom);
     // TODO: Filter
-    return states.filter((state) => state.state.level !== DANGER_LEVEL.GOOD);
+    return states
+      .filter((state) => state.state.level !== DANGER_LEVEL.GOOD)
+      .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+      .map((state) => convertAbnormalStateToBoardTableItem(state));
   },
 });

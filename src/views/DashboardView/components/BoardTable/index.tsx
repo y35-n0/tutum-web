@@ -1,18 +1,14 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import BoardTableBody from "./BoardTableBody";
 import BoardTableBox from "./BoardTableBox";
 import BoardTableHeader, {
   BoardTableHeaderItemContent,
 } from "./BoardTableHeader";
-import BoardTableRow, {
-  BoardTableItem,
-  convertAbnormalStateToBoardTableItem,
-} from "./BoardTableRow";
+import BoardTableRow, { BoardTableItem } from "./BoardTableRow";
 import BoardTableTitle from "./BoardTableTitle";
 import BoardTableInTable from "./BoardTableInTable";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { filteredAbnormalStatesSelector } from "../../../../selectors/abnormalStatesSelectors";
-import { AbnormalState } from "../../../../types/dashboardTypes";
+import { filteredBoardTableItemsSelector } from "../../../../selectors/abnormalStatesSelectors";
 import { MapPopoutStateAtom } from "../../../../atoms/mapAtoms";
 
 const tmpHeaderItems: BoardTableHeaderItemContent[] = [
@@ -48,11 +44,10 @@ const tmpHeaderItems: BoardTableHeaderItemContent[] = [
 ];
 
 const BoardTable: React.FC = () => {
-  const [headerItems, setHeaderItems] =
-    useState<BoardTableHeaderItemContent[]>(tmpHeaderItems);
+  const headerItems = tmpHeaderItems;
 
-  const filteredAbnormalStates: AbnormalState[] = useRecoilValue(
-    filteredAbnormalStatesSelector
+  const filteredBoardTableItems: BoardTableItem[] = useRecoilValue(
+    filteredBoardTableItemsSelector
   );
 
   const setMapPopoutState = useSetRecoilState(MapPopoutStateAtom);
@@ -71,16 +66,13 @@ const BoardTable: React.FC = () => {
       <BoardTableInTable>
         <BoardTableHeader items={headerItems} />
         <BoardTableBody>
-          {filteredAbnormalStates.map((state) => {
-            const item = convertAbnormalStateToBoardTableItem(state);
-            return (
-              <BoardTableRow
-                key={item.id}
-                item={item}
-                handleClick={() => handleClick(item)}
-              />
-            );
-          })}
+          {filteredBoardTableItems.map((item) => (
+            <BoardTableRow
+              key={item.id}
+              item={item}
+              handleClick={() => handleClick(item)}
+            />
+          ))}
         </BoardTableBody>
       </BoardTableInTable>
     </BoardTableBox>
