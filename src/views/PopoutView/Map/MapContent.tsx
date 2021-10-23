@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { select } from "d3";
 import { scaleLinear } from "d3-scale";
-import { TLocationExtended } from "../../hooks/useLocation";
+import { LocationExtended } from "../../../types/mapTypes";
 
 type Props = {
-  location: TLocationExtended;
+  location: LocationExtended;
 };
 
-const Map: React.FC<Props> = (props) => {
+const MapContent: React.FC<Props> = (props) => {
   const svgRef = useRef(null);
   // Scale
   // When floor data updated, update scale functions.
@@ -87,4 +87,4 @@ const Map: React.FC<Props> = (props) => {
   return <svg ref={svgRef}></svg>;
 };
 
-export default Map;
+export default MapContent;

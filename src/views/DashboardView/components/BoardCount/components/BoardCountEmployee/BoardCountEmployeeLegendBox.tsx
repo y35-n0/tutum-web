@@ -8,8 +8,8 @@ const boxStyle = css`
   flex-wrap: wrap;
 `;
 
-const CountBoardEmployeeLegendBox: React.FC = (props) => {
+const BoardCountEmployeeLegendBox: React.FC = (props) => {
   return <div css={boxStyle}>{props.children}</div>;
 };
 
-export default CountBoardEmployeeLegendBox;
+export default BoardCountEmployeeLegendBox;

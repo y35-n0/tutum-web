@@ -5,7 +5,6 @@ const bodyStyle = css`
   width: 100%;
   overflow: auto;
   text-align: center;
-  cellspacing: 0;
 
   &::-webkit-scrollbar {
     width: 6px;
