@@ -11,7 +11,7 @@ import {
   EMPLOYEE_TYPE_CONTENT,
   WORKING_CONDITION,
 } from "../constants/workingConditionContants";
-import { AbnormalState, AbnormalStateRaw } from "../types/dashboardTypes";
+import { AbnormalStateRaw } from "../types/dashboardTypes";
 import { Building, FloorRaw, LocationRaw } from "../types/mapTypes";
 
 // Input: userID
@@ -78,7 +78,7 @@ export const abnormalStatesJson: AbnormalStateRaw[] = [
       name: "방문객0",
       id: 0, // 사용자 번호
       title: EMPLOYEE_TYPE_CONTENT[EMPLOYEE_TYPE.VISITOR],
-      workingCondition: WORKING_CONDITION.VISITOR,
+      workingCondtition: WORKING_CONDITION.VISITOR,
     },
     actionStatus: PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
   },
@@ -90,7 +90,7 @@ export const abnormalStatesJson: AbnormalStateRaw[] = [
       name: "근로자0",
       id: 1,
       title: EMPLOYEE_TYPE_CONTENT[EMPLOYEE_TYPE.WORKER],
-      workingCondition: WORKING_CONDITION.WORKING,
+      workingCondtition: WORKING_CONDITION.WORKING,
     },
     actionStatus: PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.UNCHECKED],
   },
@@ -102,7 +102,7 @@ export const abnormalStatesJson: AbnormalStateRaw[] = [
       name: "근로자1",
       id: 2,
       title: EMPLOYEE_TYPE_CONTENT[EMPLOYEE_TYPE.WORKER],
-      workingCondition: WORKING_CONDITION.REST,
+      workingCondtition: WORKING_CONDITION.REST,
     },
     actionStatus: PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
   },

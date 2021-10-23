@@ -24,7 +24,12 @@ export interface AbnormalStateRaw {
   id: number;
   timestamp: string;
   state: State;
-  user: User;
+  user: {
+    name: string;
+    id: number;
+    title: typeof titleToType[number];
+    workingCondtition: number;
+  };
   actionStatus: typeof actionStatusToType[number];
 }
 
@@ -44,7 +49,12 @@ export const convertAbnormalStateRawToAbnormalState = (
     id: raw.id,
     timestamp: new Date(raw.timestamp),
     state: raw.state,
-    user: raw.user,
+    user: {
+      id: raw.user.id,
+      name: raw.user.name,
+      title: raw.user.title,
+      workingCondition: raw.user.workingCondtition,
+    },
     actionStatus: raw.actionStatus,
   };
 };
