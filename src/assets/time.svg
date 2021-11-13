@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="26">
+    <defs>
+        <clipPath id="clip-path">
+            <path style="fill:none" d="M0-3h20v26H0z"/>
+        </clipPath>
+        <style>
+            .cls-3{fill:#0b4da3}
+        </style>
+    </defs>
+    <g id="스크롤_그룹_44" data-name="스크롤 그룹 44" transform="translate(0 3)" style="isolation:isolate;clip-path:url(#clip-path)">
+        <g id="calendar" transform="translate(0 1)">
+            <g id="그룹_14780" data-name="그룹 14780">
+                <g id="그룹_14779" data-name="그룹 14779">
+                    <path id="패스_18164" data-name="패스 18164" class="cls-3" d="M18 2h-1V1a1 1 0 0 0-2 0v1H5V1a.945.945 0 0 0-1-1 .945.945 0 0 0-1 1v1H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6.1A7.96 7.96 0 0 1 19 7.8V3a1.075 1.075 0 0 0-1-1z"/>
+                </g>
+            </g>
+            <g id="그룹_14782" data-name="그룹 14782" transform="translate(8 8)">
+                <g id="그룹_14781" data-name="그룹 14781">
+                    <path id="패스_18165" data-name="패스 18165" class="cls-3" d="M210.8 204.8a6 6 0 1 0 6 6 6.018 6.018 0 0 0-6-6zm2 7h-2a.945.945 0 0 1-1-1v-3a1 1 0 1 1 2 0v2h1a1 1 0 0 1 0 2z" transform="translate(-204.8 -204.8)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
