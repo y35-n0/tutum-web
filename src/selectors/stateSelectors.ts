@@ -66,9 +66,17 @@ export const countGroupbyStateTypeItemsSelector = selector<
       (state) => state.processingStatus === PROCESSING_STATUS.UNCHECKED
     ).length;
     // TODO: count states
-    items[STATE_GROUP.COMMUNICATION].count = 0;
+    items[STATE_GROUP.COMMUNICATION].count = states.filter(
+      (state) =>
+        state.state.content.startsWith("LTE") ||
+        state.state.content.startsWith("블루투스")
+    ).length;
     items[STATE_GROUP.HEALTH].count = 0;
-    items[STATE_GROUP.NATURE].count = 0;
+    items[STATE_GROUP.NATURE].count = states.filter(
+      (state) =>
+        state.state.content.startsWith("산소") ||
+        state.state.content.startsWith("온도")
+    ).length;
     return items;
   },
 });

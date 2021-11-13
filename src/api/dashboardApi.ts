@@ -8,6 +8,7 @@ export const getAbnormalStates = async (): Promise<AbnormalStateRaw[]> => {
   let data;
   try {
     data = await instance.get("api/worker/get/AbnormalState");
+    // console.log(data);
   } catch (error) {
     console.error(error);
   }

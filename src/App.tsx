@@ -37,7 +37,7 @@ function App() {
       <Header />
       <OutWrapper>
         <NavigatorAndTime />
-        <PopupView />
+        {/* <PopupView /> */}
         <InWrapper>
           <DashboradView />
         </InWrapper>
