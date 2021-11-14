@@ -27,17 +27,18 @@ function App() {
       await updateAbnormalStates();
     }, REFETCH_INTERVAL_MS);
     return () => clearInterval(timer);
-  }, [updateAbnormalStates]);
+  }, [updatedAbnormalStates, updateAbnormalStates, setAbnormalStates]);
 
   // get and set state atom
 
+  // TODO: wrap abnormal states management
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
       <OutWrapper>
         <NavigatorAndTime />
-        {/* <PopupView /> */}
+        <PopupView />
         <InWrapper>
           <DashboradView />
         </InWrapper>

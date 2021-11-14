@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { getAbnormalStates } from "../api/dashboardApi";
 import {
   AbnormalState,
@@ -7,10 +7,11 @@ import {
   convertAbnormalStateRawToAbnormalState,
 } from "../types/dashboardTypes";
 
+// TODO: 전역에서 쓸수 있도록 고치기
 const useAbnormalStates = (): [AbnormalState[], () => Promise<void>] => {
   const [abnormalStates, setAbnormalStates] = useState<AbnormalState[]>([]);
 
-  const updateAbnormalStates = async () => {
+  const updateAbnormalStates = useCallback(async () => {
     const _abnormalStatesRaw: AbnormalStateRaw[] = await getAbnormalStates();
     const _abnormalStates: AbnormalState[] = _abnormalStatesRaw.map((state) =>
       convertAbnormalStateRawToAbnormalState(state)
@@ -18,7 +19,7 @@ const useAbnormalStates = (): [AbnormalState[], () => Promise<void>] => {
 
     if (!_.isEqual(_abnormalStates, abnormalStates))
       setAbnormalStates(_abnormalStates);
-  };
+  }, [abnormalStates]);
 
   return [abnormalStates, updateAbnormalStates];
 };
