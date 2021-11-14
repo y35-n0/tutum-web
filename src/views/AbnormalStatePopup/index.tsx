@@ -18,7 +18,9 @@ const AbnormalStatePopup: React.FC = () => {
   );
 
   const handleClick: MouseEventHandler = (e) => {
-    checkedAbnormalStateProcessingStatus(parseInt(e.currentTarget.id));
+    checkedAbnormalStateProcessingStatus(
+      +(e.target as HTMLButtonElement).dataset.id!
+    );
   };
 
   return (
@@ -45,10 +47,7 @@ const AbnormalStatePopup: React.FC = () => {
                 value={WORKING_CONDITION_CONTENT[state.user.workingCondition]}
               />
             </AbnormalStatePopupTableBody>
-            <AbnormalStatePopupButton
-              id={state.id.toString()}
-              handleClick={handleClick}
-            >
+            <AbnormalStatePopupButton id={state.id} handleClick={handleClick}>
               확인
             </AbnormalStatePopupButton>
           </AbnormalStatePopupItemBox>

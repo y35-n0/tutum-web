@@ -16,12 +16,12 @@ const style = css`
 `;
 type Props = {
   handleClick: MouseEventHandler;
-  id: string;
+  id: number;
 };
 
 const AbnormalStatePopupButton: React.FC<Props> = (props) => {
   return (
-    <button id={props.id} onClick={props.handleClick} css={style}>
+    <button data-id={props.id} onClick={props.handleClick} css={style}>
       {props.children}
     </button>
   );
