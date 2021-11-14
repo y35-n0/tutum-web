@@ -11,7 +11,7 @@ const style = css`
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
 `;
 
-const PopupBox: React.FC = (props) => {
+const AbnormalStatePopupItemBox: React.FC = (props) => {
   return <div css={style}>{props.children}</div>;
 };
-export default PopupBox;
+export default AbnormalStatePopupItemBox;

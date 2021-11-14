@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 const style = css`
   z-index: 10;
-  position: absolute;
+  position: fixed;
   height: 100%;
   overflow: auto;
   right: 0;
@@ -22,8 +22,8 @@ const style = css`
   }
 `;
 
-const PopupSide: React.FC = (props) => {
+const AbnormalStatePopupBox: React.FC = (props) => {
   return <div css={style}>{props.children}</div>;
 };
 
-export default PopupSide;
+export default AbnormalStatePopupBox;

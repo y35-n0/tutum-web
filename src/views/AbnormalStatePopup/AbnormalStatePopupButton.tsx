@@ -18,7 +18,7 @@ type Props = {
   handleClick: MouseEventHandler;
 };
 
-const PopupButton: React.FC<Props> = (props) => {
+const AbnormalStatePopupButton: React.FC<Props> = (props) => {
   return (
     <button onClick={props.handleClick} css={style}>
       {props.children}
@@ -26,4 +26,4 @@ const PopupButton: React.FC<Props> = (props) => {
   );
 };
 
-export default PopupButton;
+export default AbnormalStatePopupButton;

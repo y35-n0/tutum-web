@@ -9,7 +9,7 @@ import {
 type Props = {
   level: DANGER_LEVEL;
 };
-const PopupHeader: React.FC<Props> = (props) => {
+const AbnormalStatePopupHeader: React.FC<Props> = (props) => {
   return (
     <div>
       <h1
@@ -26,4 +26,4 @@ const PopupHeader: React.FC<Props> = (props) => {
   );
 };
 
-export default PopupHeader;
+export default AbnormalStatePopupHeader;

@@ -10,7 +10,7 @@ import NavigatorAndTime from "./views/common/NavigatorAndTime";
 import InWrapper from "./views/common/Wrapper/InWrapper";
 import OutWrapper from "./views/common/Wrapper/OutWrapper";
 import DashboradView from "./views/DashboardView";
-import PopupView from "./views/PopupView";
+import AbnormalStatePopup from "./views/AbnormalStatePopup";
 
 function App() {
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
       <Header />
       <OutWrapper>
         <NavigatorAndTime />
-        <PopupView />
+        <AbnormalStatePopup />
         <InWrapper>
           <DashboradView />
         </InWrapper>

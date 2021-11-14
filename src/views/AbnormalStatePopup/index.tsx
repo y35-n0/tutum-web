@@ -11,7 +11,7 @@ import PopupSide from "./PopupSide";
 import PopupTableBody from "./PopupTableBody";
 import PopupTableRow from "./PopupTableRow";
 
-const PopupView: React.FC = () => {
+const AbnormalStatePopup: React.FC = () => {
   const newAbnormalStates: AbnormalState[] = useRecoilValue(
     newAbnormalStatesSelector
   );
@@ -44,4 +44,4 @@ const PopupView: React.FC = () => {
   );
 };
 
-export default PopupView;
+export default AbnormalStatePopup;
