@@ -1,46 +1,68 @@
-import { MouseEventHandler } from "react";
 import { useRecoilValue } from "recoil";
 import { WORKING_CONDITION_CONTENT } from "../../constants/employeeContants";
 import { newAbnormalStatesSelector } from "../../selectors/stateSelectors";
 import { AbnormalState } from "../../types/dashboardTypes";
 import { formattingDate } from "../common/GlobalStyle";
-import PopupBox from "./PopupBox";
-import PopupButton from "./PopupButton";
-import PopupHeader from "./PopupHeader";
-import PopupSide from "./PopupSide";
-import PopupTableBody from "./PopupTableBody";
-import PopupTableRow from "./PopupTableRow";
+import AbnormalStatePopupItemBox from "./AbnormalStatePopupItemBox";
+import AbnormalStatePopupButton from "./AbnormalStatePopupButton";
+import AbnormalStatePopupHeader from "./AbnormalStatePopupHeader";
+import AbnormalStatePopupBox from "./AbnormalStatePopupBox";
+import AbnormalStatePopupTableBody from "./AbnormalStatePopupTableBody";
+import AbnormalStatePopupTableRow from "./AbnormalStatePopupTableRow";
+import { updateAbnormalStateProcessingStatus } from "../../api/dashboardApi";
+import {
+  PROCESSING_STATUS,
+  PROCESSING_STATUS_CONTENT,
+} from "../../constants/stateConstants";
 
 const AbnormalStatePopup: React.FC = () => {
   const newAbnormalStates: AbnormalState[] = useRecoilValue(
     newAbnormalStatesSelector
   );
 
-  // TODO: 확인 및 popup 닫기
-  const handleClick: MouseEventHandler = (e) => {};
+  const checkedAbnormalStateProcessingStatus = async (id: number) => {
+    updateAbnormalStateProcessingStatus({
+      id: id,
+      processingStatus:
+        PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
+    });
+  };
+
   return (
-    <PopupSide>
+    <AbnormalStatePopupBox>
       {newAbnormalStates.map((state) => {
         return (
-          <PopupBox>
-            <PopupHeader level={state.state.level} />
-            <PopupTableBody>
-              <PopupTableRow
+          <AbnormalStatePopupItemBox>
+            <AbnormalStatePopupHeader level={state.state.level} />
+            <AbnormalStatePopupTableBody>
+              <AbnormalStatePopupTableRow
                 content="발생시간"
                 value={formattingDate(state.timestamp)}
               />
-              <PopupTableRow content="내용" value={state.state.content} />
-              <PopupTableRow content="이름" value={state.user.name} />
-              <PopupTableRow
+              <AbnormalStatePopupTableRow
+                content="내용"
+                value={state.state.content}
+              />
+              <AbnormalStatePopupTableRow
+                content="이름"
+                value={state.user.name}
+              />
+              <AbnormalStatePopupTableRow
                 content="근무 상태"
                 value={WORKING_CONDITION_CONTENT[state.user.workingCondition]}
               />
-            </PopupTableBody>
-            <PopupButton handleClick={handleClick}> 확인</PopupButton>
-          </PopupBox>
+            </AbnormalStatePopupTableBody>
+            <AbnormalStatePopupButton
+              handleClick={(e) => {
+                checkedAbnormalStateProcessingStatus(state.id);
+              }}
+            >
+              확인
+            </AbnormalStatePopupButton>
+          </AbnormalStatePopupItemBox>
         );
       })}
-    </PopupSide>
+    </AbnormalStatePopupBox>
   );
 };
 

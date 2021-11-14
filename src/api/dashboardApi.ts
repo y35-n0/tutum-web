@@ -24,11 +24,11 @@ export const updateAbnormalStateProcessingStatus = async (
 ) => {
   let res;
   try {
-    res = await instance.post("api/worker/get/AbnormalState", {
+    res = await instance.post("api/worker/update/abnormalState", {
       id: status.id,
       actionStatus: status.processingStatus,
     });
-    console.log(res);
+    // console.log(res?.data.data);
   } catch (error) {
     console.error(error);
   }
