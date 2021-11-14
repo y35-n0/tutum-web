@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 
 const outerStyle = css`
-  position: fixed;
+  position: flex;
   background-color: var(--title-color);
   z-index: 1000;
   width: 100%;

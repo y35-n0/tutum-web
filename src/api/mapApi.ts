@@ -10,7 +10,7 @@ export const getLocation = async (userId: number): Promise<LocationRaw> => {
   try {
     res = await instance.get(`/api/worker/get/loc&${userId}`);
     // console.log(res.data.data);
-    // res.data.data.z = 0;
+    res.data.data.z = 4;
     // res.data.data.x = 30;
     // res.data.data.y = 20;
   } catch (error) {
