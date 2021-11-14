@@ -1,8 +1,9 @@
 import axios from "axios";
 import {
-  AbnormalStateRaw,
-  AbnormalStatesProcessingStatus,
-} from "../types/dashboardTypes";
+  PROCESSING_STATUS,
+  PROCESSING_STATUS_CONTENT,
+} from "../constants/stateConstants";
+import { AbnormalStateRaw } from "../types/dashboardTypes";
 
 const instance = axios.create({});
 
@@ -19,14 +20,12 @@ export const getAbnormalStates = async (): Promise<AbnormalStateRaw[]> => {
 };
 
 // 이상상태 미확인 수정
-export const updateAbnormalStateProcessingStatus = async (
-  status: AbnormalStatesProcessingStatus
-) => {
+export const checkedAbnormalStateProcessingStatus = async (id: number) => {
   let res;
   try {
     res = await instance.post("api/worker/update/abnormalState", {
-      id: status.id,
-      actionStatus: status.processingStatus,
+      id: id,
+      actionStatus: PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
     });
     // console.log(res?.data.data);
   } catch (error) {

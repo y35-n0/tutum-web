@@ -9,23 +9,16 @@ import AbnormalStatePopupHeader from "./AbnormalStatePopupHeader";
 import AbnormalStatePopupBox from "./AbnormalStatePopupBox";
 import AbnormalStatePopupTableBody from "./AbnormalStatePopupTableBody";
 import AbnormalStatePopupTableRow from "./AbnormalStatePopupTableRow";
-import { updateAbnormalStateProcessingStatus } from "../../api/dashboardApi";
-import {
-  PROCESSING_STATUS,
-  PROCESSING_STATUS_CONTENT,
-} from "../../constants/stateConstants";
+import { checkedAbnormalStateProcessingStatus } from "../../api/dashboardApi";
+import { MouseEventHandler } from "react";
 
 const AbnormalStatePopup: React.FC = () => {
   const newAbnormalStates: AbnormalState[] = useRecoilValue(
     newAbnormalStatesSelector
   );
 
-  const checkedAbnormalStateProcessingStatus = async (id: number) => {
-    updateAbnormalStateProcessingStatus({
-      id: id,
-      processingStatus:
-        PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
-    });
+  const handleClick: MouseEventHandler = (e) => {
+    checkedAbnormalStateProcessingStatus(parseInt(e.currentTarget.id));
   };
 
   return (
@@ -53,9 +46,8 @@ const AbnormalStatePopup: React.FC = () => {
               />
             </AbnormalStatePopupTableBody>
             <AbnormalStatePopupButton
-              handleClick={(e) => {
-                checkedAbnormalStateProcessingStatus(state.id);
-              }}
+              id={state.id.toString()}
+              handleClick={handleClick}
             >
               확인
             </AbnormalStatePopupButton>

@@ -6,6 +6,7 @@ const outerBoxStyle = css`
   background-color: #fff;
   border-radius: 20px;
   box-shadow: var(--box-shadow);
+  margin-bottom: 40px;
 `;
 
 const innerBoxStyle = css`
