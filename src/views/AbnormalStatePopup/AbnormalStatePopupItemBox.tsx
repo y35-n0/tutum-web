@@ -8,7 +8,7 @@ const style = css`
   padding: 10px;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const AbnormalStatePopupItemBox: React.FC = (props) => {
