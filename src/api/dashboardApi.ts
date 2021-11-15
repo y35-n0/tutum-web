@@ -5,13 +5,15 @@ import {
 } from "../constants/stateConstants";
 import { AbnormalStateRaw } from "../types/dashboardTypes";
 
-const instance = axios.create({});
+const instance = axios.create({
+  // baseURL: `http:${process.env.REACT_APP_API_SERVER}:8000`,
+});
 
 // 이상상태 현황 목록 가져오기
 export const getAbnormalStates = async (): Promise<AbnormalStateRaw[]> => {
   let res;
   try {
-    res = await instance.get("api/worker/get/AbnormalState");
+    res = await instance.get("/api/worker/get/AbnormalState");
     // console.log(res.data.data);
   } catch (error) {
     console.error(error);
@@ -23,7 +25,7 @@ export const getAbnormalStates = async (): Promise<AbnormalStateRaw[]> => {
 export const checkedAbnormalStateProcessingStatus = async (id: number) => {
   let res;
   try {
-    res = await instance.post("api/worker/update/abnormalState", {
+    res = await instance.post("/api/worker/update/abnormalState", {
       id: id,
       actionStatus: PROCESSING_STATUS_CONTENT[PROCESSING_STATUS.IN_PROGRESS],
     });

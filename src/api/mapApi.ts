@@ -2,7 +2,9 @@
 import axios from "axios";
 import { Building, FloorRaw, LocationRaw } from "../types/mapTypes";
 
-const instance = axios.create({});
+const instance = axios.create({
+  // baseURL: `http:${process.env.REACT_APP_API_SERVER}:8000`,
+});
 
 export const getLocation = async (userId: number): Promise<LocationRaw> => {
   // console.log("getLocation");

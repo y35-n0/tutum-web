@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
 import "./App.css";
-import { abnormalStatesAtom } from "./atoms/abnormalStatesAtoms";
 import AbnormalStatesQuery from "./queries/AbnormalStatesQuery";
-import useAbnormalStates from "./queries/AbnormalStatesQuery";
 import GlobalStyle from "./views/common/GlobalStyle";
 import Header from "./views/common/Header";
 import NavigatorAndTime from "./views/common/NavigatorAndTime";
