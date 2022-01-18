@@ -6,7 +6,7 @@ import MapFooter from "./MapFooter";
 import MapHeader from "./MapHeader";
 import MapBox from "./MapBox";
 
-const REFETCH_INTERVAL_MS = 1000;
+const REFETCH_INTERVAL_MS = 5000;
 
 type Props = {
   userId: number;

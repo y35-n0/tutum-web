@@ -35,6 +35,7 @@ const BoardCountState: React.FC = () => {
     }
   };
 
+  // console.log(countGroupbyStateTypeItems);
   return (
     <BoardCountStateBox>
       {countGroupbyStateTypeItems.map((item) => (

@@ -16,14 +16,15 @@ const style = css`
 `;
 type Props = {
   handleClick: MouseEventHandler;
+  id: number;
 };
 
-const PopupButton: React.FC<Props> = (props) => {
+const AbnormalStatePopupButton: React.FC<Props> = (props) => {
   return (
-    <button onClick={props.handleClick} css={style}>
+    <button data-id={props.id} onClick={props.handleClick} css={style}>
       {props.children}
     </button>
   );
 };
 
-export default PopupButton;
+export default AbnormalStatePopupButton;

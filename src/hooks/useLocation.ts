@@ -22,10 +22,11 @@ const useLocation = (
     useState<LocationExtended>(initialData);
 
   const updateLocation = async () => {
-    let _locationExtended = { ...locationExtended };
+    let _locationExtended: LocationExtended = { ...locationExtended };
     const _locationRaw: LocationRaw = await getLocation(
       _locationExtended.userId
     );
+
     const _location: Location = convertLocationRawToLocation(_locationRaw);
 
     const _setFloor = async () => {
@@ -60,7 +61,7 @@ const useLocation = (
     // 건물이 같음
     if (
       _locationExtended.building &&
-      _locationExtended.building.id === _location.buildingId
+      _locationExtended.building?.id === _location.buildingId
     ) {
       if (
         _locationExtended.floor &&

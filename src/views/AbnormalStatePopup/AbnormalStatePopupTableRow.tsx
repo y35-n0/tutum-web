@@ -19,7 +19,7 @@ type Props = {
   value: string;
 };
 
-const PopupTableRow: React.FC<Props> = (props) => {
+const AbnormalStatePopupTableRow: React.FC<Props> = (props) => {
   return (
     <tr css={rowStyle}>
       <td css={contentStyle}>{props.content}</td>
@@ -28,4 +28,4 @@ const PopupTableRow: React.FC<Props> = (props) => {
   );
 };
 
-export default PopupTableRow;
+export default AbnormalStatePopupTableRow;

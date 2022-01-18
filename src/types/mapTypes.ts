@@ -20,7 +20,7 @@ interface Image {
 
 // 층별 정보
 export interface FloorRaw {
-  buildingId: number; // 빌딩 번호
+  id: number; // 빌딩 번호
   level: number; // 층수
   name: string; // 층수명
   top: number; // 층수명
@@ -40,7 +40,7 @@ export interface Floor {
 
 export const convertFloorRawToFloor = (raw: FloorRaw): Floor => {
   return {
-    buildingId: raw.buildingId,
+    buildingId: raw.id,
     level: raw.level,
     name: raw.name,
     img: {

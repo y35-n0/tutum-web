@@ -24,6 +24,7 @@ export interface User {
   workingCondition: WORKING_CONDITION;
 }
 
+const processingStatusToType = Object.values(PROCESSING_STATUS_CONTENT);
 export interface AbnormalStateRaw {
   id: number;
   timestamp: string;
@@ -36,8 +37,6 @@ export interface AbnormalStateRaw {
   };
   actionStatus: typeof processingStatusToType[number];
 }
-
-const processingStatusToType = Object.values(PROCESSING_STATUS_CONTENT);
 
 export interface AbnormalState {
   id: number;
@@ -63,3 +62,8 @@ export const convertAbnormalStateRawToAbnormalState = (
     processingStatus: +CONTENT_PROCESSING_STATUS[raw.actionStatus],
   };
 };
+
+export interface AbnormalStatesProcessingStatus {
+  id: number;
+  processingStatus: typeof processingStatusToType[number];
+}

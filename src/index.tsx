@@ -12,12 +12,12 @@ const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <RecoilRoot>
         <App />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </RecoilRoot>
+      </RecoilRoot>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
