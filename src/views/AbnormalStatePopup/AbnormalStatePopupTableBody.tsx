@@ -9,8 +9,8 @@ const style = css`
   margin: 10px 0px;
 `;
 
-const PopupTableBody: React.FC = (props) => {
+const AbnormalStatePopupTableBody: React.FC = (props) => {
   return <table css={style}>{props.children}</table>;
 };
 
-export default PopupTableBody;
+export default AbnormalStatePopupTableBody;

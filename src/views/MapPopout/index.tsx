@@ -9,11 +9,9 @@ export interface MapPopoutState {
 }
 
 const MapPopoutView: React.FC = () => {
-  // TODO: get popout item atom
   const [mapPopoutState, setMapPopoutState] =
     useRecoilState(MapPopoutStateAtom);
 
-  // TODO: set popout item atom
   return (
     mapPopoutState && (
       <Popout

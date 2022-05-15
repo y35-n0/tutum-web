@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 
 type Prop = {
   title: string;
@@ -12,6 +14,10 @@ type Prop = {
 const Popout: React.FC<Prop> = (props) => {
   const [containerElement, setContainerElement] =
     useState<HTMLDivElement | null>(null);
+  const styleCache = createCache({
+    key: "external",
+    container: containerElement ?? undefined,
+  });
 
   useEffect(() => {
     // FIXME: features 크기 변경
@@ -36,7 +42,10 @@ const Popout: React.FC<Prop> = (props) => {
     setContainerElement(_containerElement);
   }, [props]);
   return containerElement
-    ? createPortal(props.children, containerElement)
+    ? createPortal(
+        <CacheProvider value={styleCache}>{props.children}</CacheProvider>,
+        containerElement
+      )
     : null;
 };
 

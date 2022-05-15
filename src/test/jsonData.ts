@@ -53,7 +53,7 @@ export const buildingJson: Building = {
 // 층수 이미지 정보 가져오기
 // Input : buildingId, floorLevel
 export const floorJson: FloorRaw = {
-  buildingId: 0,
+  id: 0,
   level: -1,
   name: "지하 1층",
   url: "http://www.timessquare.co.kr/images/map/shop_1f.png",
